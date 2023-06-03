@@ -1,5 +1,81 @@
 .wrapper {
   height: 100px;
   width: 100%;
-  background-color:bisque;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo_vlearn {
+  margin-left: 25px;
+  flex: 80%;
+}
+
+.wrapper i{
+  flex: 1%;
+  font-size: 20px;
+}
+
+.header_img {
+  flex: 7%;
+}
+
+.header_avatar {
+  width: 70%;
+  height: 90%;
+  padding-left: 3px;
+  margin-right: 5px;
+  border-radius: 50% 50%;
+}
+
+.header-chevron-down i{
+  flex: 1%;
+  font-size: 25px;
+  margin-right: 10px;
+}
+@media (min-width:680px) and (max-width: 960px){ 
+  .logo_vlearn {
+      flex: 70%;
+  }
+  .header_avatar {
+      width: 75%;
+      padding-left: 2px;
+      margin-right: 3px;
+  }
+  .logo_vlearn{
+      font-size: 22px;
+  }
+  .wrapper i {
+    font-size: 18px;
+}
+.wrapper {
+  height: 90px;
+}
+}
+@media screen  and (max-width:680px){
+  .logo_vlearn{
+      flex: 65%;
+      font-size: larger;
+  }
+  .header_avatar {
+      width: 90%;
+      padding-left: 1px;
+      padding-right: 3px;
+  }
+  .header-chevron-down i{
+      font-size: 20px;
+  }
+  .wrapper i {
+      font-size: 15px;
+  }
+  .wrapper {
+    height: 80px;
+  }
 }
