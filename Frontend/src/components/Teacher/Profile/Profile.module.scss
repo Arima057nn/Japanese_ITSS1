@@ -1,0 +1,100 @@
+.wrapper{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    
+}
+.pd-r15{
+    padding-right: 15px;
+}
+.pd-r35{
+    padding-right: 35px;
+}
+.pd-r58{
+    padding-right: 58px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.right{
+    background-color: white;
+    width: 450px;
+    height: 500px;
+    margin-right: 10px;
+}
+.left{
+    background-color: white;
+    width: 500px;
+    height: 550px;
+}
+.button1{
+    margin-left: 255px;
+    font-weight: bold;
+    padding: 0 35px;
+}
+.header-profile{
+    margin-top: 10px;
+    display: flex;
+}
+.img-profile{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-left: 150px;
+    margin-top: 10px;
+}  
+.pd-rating {
+    padding: 3px 15px;
+    margin: 6px 170px;
+    background-color: rgb(175, 233, 244);
+  }
+  .pd-rating i {
+    color: yellow;
+  } 
+.p-profile{
+    line-height: 2;
+    margin: 5px 20px;  
+}
+.profile-info{
+    display: flex;
+    margin: 15px 20px 0;
+}
+.profile-info-mt10{
+    display: flex;
+    margin: 40px 20px 0;
+}
+
+.p-info{
+    
+    margin-right: 20px;
+}
+.bottom-btn{
+    margin-top: 25px;
+    margin-left: 15px;
+}
+.btn-1{
+    font-weight: bold;
+    padding: 0 60px;
+}
+.btn-2{
+    font-weight: bold;
+    padding: 0 55px;
+    margin-left: 75px;
+}
+.profile-title{
+    padding-right: 70px;
+    margin-top: 20px;
+    margin-left: 40px;
+    display: flex;
+}
+.profile-title-phone{
+    padding-right: 70px;
+    margin-top: 20px;
+    margin-left: 15px;
+    display: flex;
+}
+.left-btn{
+    font-weight: bold;
+    padding: 0 55px;
+    margin: 55px 135px;
+}
