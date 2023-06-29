@@ -39,11 +39,11 @@ async function getAllFeedbacks() {
 
 // Read a feedback by ID
 async function getFeedbackById(feedbackId) {
-	const query = "SELECT * FROM Feedback WHERE id = ?";
+	const query = "SELECT * FROM Feedback WHERE teacher_profile_id = ?";
 
 	try {
 		const result = await db.query(query, [feedbackId]);
-		return result[0];
+		return result;
 	} catch (error) {
 		console.error("Error while getting feedback:", error.message);
 		throw error;
