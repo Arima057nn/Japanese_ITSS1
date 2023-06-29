@@ -27,7 +27,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // Read a bookmark by ID
-router.get("/search", async (req, res, next) => {
+router.post("/search", async (req, res, next) => {
 	try {
 		const body = req.body;
 		const result = await bookmarkController.getBookmarkById(body);
