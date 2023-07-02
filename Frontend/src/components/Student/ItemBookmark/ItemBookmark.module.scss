@@ -1,0 +1,42 @@
+.giaovien {
+  display: flex;
+  border: 1px solid rgb(126, 125, 125);
+  padding: 10px 0;
+  width: 100%;
+  background: rgb(219, 218, 216);
+  margin-bottom: 30px;
+  border-radius: 4px;
+}
+
+.cot1 {
+  flex: 1;
+  background: rgb(219, 218, 216);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 16px;
+  margin-right: 12px;
+}
+
+.cot2 {
+  flex: 7;
+  background: rgb(219, 218, 216);
+  display: flex;
+  flex-direction: column;
+}
+
+.cot3 {
+  flex: 2;
+  background: rgb(219, 218, 216);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating {
+  margin: 6px 0;
+  padding: 0px 3px;
+  color: rgb(240, 197, 8);
+  width: fit-content;
+  background-color: rgb(196, 231, 233);
+}

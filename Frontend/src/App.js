@@ -36,18 +36,18 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* 1 */}
+        {/* 1 done*/}
         <Route path="/login" element={<Login />} />
-        {/* 2 Quỳnh*/}
+        {/* 2 Quỳnh done*/}
         <Route path="/signup" element={<SignUp />} />
-        {/* 3 Quỳnh*/}
+        {/* 3 Quỳnh done*/}
         <Route
           path="/home"
           element={
             role !== 1 && role !== 3 ? <HomeSearch /> : <h1>Not found</h1>
           }
         />
-        {/* 4 Tú*/}
+        {/* 4 Tú done*/}
         <Route
           path="/info/:id"
           element={
@@ -58,7 +58,7 @@ function App() {
             )
           }
         />
-        {/*  */}
+        {/* done */}
         <Route
           path="/profile"
           element={
@@ -69,7 +69,7 @@ function App() {
             )
           }
         />
-
+        {/* done */}
         <Route
           path="/profile/setting"
           element={
