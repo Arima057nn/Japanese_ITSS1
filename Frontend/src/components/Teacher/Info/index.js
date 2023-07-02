@@ -30,7 +30,7 @@ function Info() {
   const params = useParams();
   const [teacher, setTeacher] = useState({});
   const [profile, setProfile] = useState({});
-  const [feedbacks, setFeedbacks] = useState({});
+  const [feedbacks, setFeedbacks] = useState([]);
   const [resultLevel, setResultLevel] = useState([]);
   const [resultDay, setResultDay] = useState([]);
   const [resultTime, setResultTime] = useState([]);

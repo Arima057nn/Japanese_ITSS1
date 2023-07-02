@@ -26,7 +26,7 @@ const style = {
 
 function Profile() {
   const [teacher, setTeacher] = useState({});
-  const [feedbacks, setFeedbacks] = useState({});
+  const [feedbacks, setFeedbacks] = useState([]);
   const [resultLevel, setResultLevel] = useState([]);
   const [resultDay, setResultDay] = useState([]);
   const [resultTime, setResultTime] = useState([]);
@@ -65,6 +65,7 @@ function Profile() {
   const handleClose = () => setOpen(false);
 
   const getFeedbacks = async () => {
+    console.log("<<<<<<<,id: ", teacher.id);
     let res = await feedbackApi.getFeedback(teacher.id);
     setFeedbacks(res);
     console.log("fb: ", res);
