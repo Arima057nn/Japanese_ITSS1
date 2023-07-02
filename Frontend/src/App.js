@@ -44,7 +44,7 @@ function App() {
         <Route
           path="/home"
           element={
-            role !== "1" && role !== "3" ? <HomeSearch /> : <h1>Not found</h1>
+            role !== 1 && role !== 3 ? <HomeSearch /> : <h1>Not found</h1>
           }
         />
         {/* 4 Tú*/}

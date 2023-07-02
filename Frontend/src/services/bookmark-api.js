@@ -8,6 +8,6 @@ export const bookmarkApi = {
     return axiosClient.post(`/bookmarks`, bookmark);
   },
   searchBookmark(bookmark) {
-    return axiosClient.get((`/bookmarks/search/`, bookmark));
+    return axiosClient.post(`/bookmarks/search`, bookmark);
   },
 };

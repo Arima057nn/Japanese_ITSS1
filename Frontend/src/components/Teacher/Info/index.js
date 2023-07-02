@@ -66,9 +66,6 @@ function Info() {
   const getTeacher = async () => {
     let res = await teacherApi.getTeacher(params.id);
     setTeacher(res);
-    // console.log("first:", user);
-    // let res2 = await bookmarkApi.searchBookmark(51, 131);
-    // console.log("resssss:", res2);
 
     setBookmark({
       ...bookmark,
@@ -84,7 +81,6 @@ function Info() {
   };
 
   const handleBookmark = () => {
-    // let res = await bookmarkApi.createBookmark(bookmark);
     let i = 0;
     console.log("bookmark: ", bookmark);
     // console.log("user1: ", user.userId);
@@ -103,6 +99,23 @@ function Info() {
     };
     createBookmark();
   }, [bookmark.studentId]);
+
+  useEffect(() => {
+    const searchBookmark = async () => {
+      let res = await bookmarkApi.searchBookmark({
+        studentId: user.userId,
+        teacher_profile_id: teacher.id,
+      });
+      if (res.length === 0) {
+        setBookmarked(false);
+        console.log("search: null");
+      } else {
+        setBookmarked(true);
+        console.log("search: ", res);
+      }
+    };
+    searchBookmark();
+  }, [user.userId, teacher.id]);
 
   return (
     <>
