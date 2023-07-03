@@ -13,4 +13,8 @@ export const teacherApi = {
   updateProfile(id, info) {
     return axiosClient.put(`/teacher-profiles/${id}`, info);
   },
+
+  getBookmarkTeachers(bookmark) {
+    return axiosClient.post(`/teacher-profiles/bookmark`, bookmark);
+  },
 };

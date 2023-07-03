@@ -108,11 +108,11 @@ function Profile() {
             <h4>性別 : {teacher.sex === "Male" ? "男の人" : "女の人"}</h4>
           </div>
           <div className={cx("profile-title")}>
-            <h4 style={{ paddingRight: 45 }}>メール</h4>
+            <h4 style={{ paddingRight: 40 }}>メール</h4>
             <h4>: {teacher.mail}</h4>
           </div>
           <div className={cx("profile-title-phone")}>
-            <h4 style={{ paddingRight: 45 }}>電話番号</h4>
+            <h4 style={{ paddingRight: 40 }}>電話番号</h4>
             <h4>: {teacher.phone_number}</h4>
           </div>
         </div>
