@@ -34,6 +34,20 @@ async function getAllDetailTeacherProfile(req, res, next) {
 	}
 }
 
+// Get a teacher profile by studentID with Bookmark
+async function getAllTeacherProfileWithBookmarkByStudentId(req, res, next) {
+	try {
+		const result =
+			await teacherProfileService.getAllTeacherProfileWithBookmarkByStudentId(
+				req.body
+			);
+		return res.status(200).json(result);
+	} catch (error) {
+		console.error("Error while getting target-teacher profile:", error.message);
+		return res.status(500).json({ message: error.message });
+	}
+}
+
 // Get a teacher profile by ID
 async function getDetailTeacherProfileById(req, res, next) {
 	try {
@@ -114,4 +128,5 @@ module.exports = {
 	getAllDetailTeacherProfile,
 	getDetailTeacherProfileById,
 	filterDetailTeacherProfile,
+	getAllTeacherProfileWithBookmarkByStudentId,
 };

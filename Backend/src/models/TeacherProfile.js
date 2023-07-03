@@ -76,6 +76,46 @@ JOIN
 	}
 }
 
+// Get all teacher profiles
+async function getAllTeacherProfileWithBookmarkByStudentId(data) {
+	try {
+		const query = `SELECT 
+		TeacherProfile.id, 
+		TeacherProfile.teacher_id, 
+		TeacherProfile.target_id, 
+		TeacherProfile.mail, 
+		TeacherProfile.phone_number,
+		TeacherProfile.experience, 
+		TeacherProfile.level, 
+		TeacherProfile.tution, 
+		TeacherProfile.address, 
+		TeacherProfile.available_day,
+		Bookmark.studentId, 
+		Bookmark.teacher_profile_id, 
+		Bookmark.target_id, 
+		Bookmark.status
+		
+	FROM 
+		TeacherProfile
+	JOIN 
+		Bookmark 
+		ON 
+		TeacherProfile.id = Bookmark.teacher_profile_id
+	WHERE 
+		Bookmark.studentId = ? 
+		AND 
+		Bookmark.status = ?;
+	`;
+
+		const values = [data.studentId, data.status];
+		const teacherProfiles = await db.query(query, values);
+		return teacherProfiles;
+	} catch (error) {
+		console.error("Error getting all detail teacher profiles:", error);
+		throw error;
+	}
+}
+
 // Get a teacher profile by ID
 async function getDetailTeacherProfileById(teacherProfileId) {
 	const query = `SELECT
@@ -274,4 +314,5 @@ module.exports = {
 	getAllDetailTeacherProfile,
 	getDetailTeacherProfileById,
 	filterDetailTeacherProfile,
+	getAllTeacherProfileWithBookmarkByStudentId,
 };

@@ -35,6 +35,17 @@ async function getAllDetailTeacherProfile() {
 	}
 }
 
+//getAllTeacherProfileWithBookmarkByStudentId
+async function getAllTeacherProfileWithBookmarkByStudentId(data) {
+	try {
+		const teacherProfiles =
+			await TeacherProfile.getAllTeacherProfileWithBookmarkByStudentId(data);
+		return teacherProfiles;
+	} catch (error) {
+		console.error("Error getting all detail teacher profiles:", error);
+		throw error;
+	}
+}
 // Get a teacher profile by ID
 async function getDetailTeacherProfileById(teacherProfileId) {
 	try {
@@ -124,4 +135,5 @@ module.exports = {
 	getAllDetailTeacherProfile,
 	getDetailTeacherProfileById,
 	filterDetailTeacherProfile,
+	getAllTeacherProfileWithBookmarkByStudentId,
 };

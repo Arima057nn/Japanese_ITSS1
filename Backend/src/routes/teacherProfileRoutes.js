@@ -22,6 +22,11 @@ router.get(
 // Filter teacher profile by
 router.post("/details", teacherProfileController.filterDetailTeacherProfile);
 
+router.post(
+	"/bookmark/",
+	teacherProfileController.getAllTeacherProfileWithBookmarkByStudentId
+);
+
 // Get a teacher profile by ID
 router.get("/:id", teacherProfileController.getTeacherProfileById);
 
