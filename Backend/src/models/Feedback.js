@@ -39,7 +39,23 @@ async function getAllFeedbacks() {
 
 // Read a feedback by ID
 async function getFeedbackById(feedbackId) {
-	const query = "SELECT * FROM Feedback WHERE teacher_profile_id = ?";
+	const query = `SELECT 
+	Feedback.id, 
+	Feedback.studentId, 
+	Feedback.teacher_profile_id, 
+	Feedback.feedback_content, 
+	Feedback.rating,
+	User.user_name, 
+	User.first_name, 
+	User.last_name
+	FROM 
+		Feedback
+	JOIN 
+		User 
+		ON 
+		User.id = Feedback.studentId
+	WHERE 
+		teacher_profile_id = ?`;
 
 	try {
 		const result = await db.query(query, [feedbackId]);
