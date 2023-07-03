@@ -128,7 +128,7 @@ function ProfileSetting() {
             </h4>
           </div>
           <div className={cx("profile-title")}>
-            <h4 style={{ paddingRight: 45 }}>メール</h4>
+            <h4 style={{ paddingRight: 40 }}>メール</h4>
             <h4>
               :{" "}
               <input
@@ -143,7 +143,7 @@ function ProfileSetting() {
             </h4>
           </div>
           <div className={cx("profile-title-phone")}>
-            <h4 style={{ paddingRight: 45 }}>電話番号</h4>
+            <h4 style={{ paddingRight: 40 }}>電話番号</h4>
             <h4>
               :{" "}
               <input

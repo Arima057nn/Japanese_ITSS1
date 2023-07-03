@@ -75,6 +75,14 @@ function Header() {
                 </NavLink>
               </NavDropdown.Item>
             )}
+            {token && user.role === 2 && (
+              <NavDropdown.Item href="/student/bookmark">
+                <NavLink to="/student/bookmark" className="nav-link">
+                  ブックマークしたリスト
+                </NavLink>
+              </NavDropdown.Item>
+            )}
+
             {token && (
               <NavDropdown.Item onClick={() => handleLogout()}>
                 ログアウト

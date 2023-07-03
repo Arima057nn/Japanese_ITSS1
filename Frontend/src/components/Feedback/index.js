@@ -14,7 +14,9 @@ function Feedback({ feedback }) {
           </div>
 
           <div className={cx("cot2")}>
-            <h4>Pham Tien Dung</h4>
+            <h4>
+              {fb.last_name} {fb.first_name}
+            </h4>
             <div className={cx("rating")}>
               {[...Array(5)].map((_star, i) => (
                 <i

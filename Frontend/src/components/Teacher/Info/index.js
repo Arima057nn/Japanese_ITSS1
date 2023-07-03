@@ -83,7 +83,6 @@ function Info() {
   const handleBookmark = () => {
     let i = 0;
     console.log("bookmark: ", bookmark);
-    // console.log("user1: ", user.userId);
     setBookmark((prevBookmark) => ({
       ...prevBookmark,
       studentId: user.userId,
@@ -97,7 +96,9 @@ function Info() {
       console.log("bookmark2: ", bookmark);
       let res = await bookmarkApi.createBookmark(bookmark);
     };
-    createBookmark();
+    if (bookmark.studentId) {
+      createBookmark();
+    }
   }, [bookmark.studentId]);
 
   useEffect(() => {
@@ -114,7 +115,9 @@ function Info() {
         console.log("search: ", res);
       }
     };
-    searchBookmark();
+    if (user.userId !== 0 && teacher.id) {
+      searchBookmark();
+    }
   }, [user.userId, teacher.id]);
 
   return (
@@ -146,7 +149,7 @@ function Info() {
           <div className={cx("profile-title")}>
             <h4 style={{ paddingRight: 70 }}>名前</h4>
             <h4>
-              : {teacher.first_name} {teacher.last_name}
+              : {teacher.last_name} {teacher.first_name}
             </h4>
           </div>
           <div className={cx("profile-title")}>
@@ -154,11 +157,11 @@ function Info() {
             <h4>性別 : {teacher.sex === "Male" ? "男の人" : "女の人"}</h4>
           </div>
           <div className={cx("profile-title")}>
-            <h4 style={{ paddingRight: 45 }}>メール</h4>
+            <h4 style={{ paddingRight: 40 }}>メール</h4>
             <h4>: {teacher.mail}</h4>
           </div>
           <div className={cx("profile-title-phone")}>
-            <h4 style={{ paddingRight: 45 }}>電話番号</h4>
+            <h4 style={{ paddingRight: 40 }}>電話番号</h4>
             <h4>: {teacher.phone_number}</h4>
           </div>
           {!bookmarked ? (
@@ -166,11 +169,7 @@ function Info() {
               仮申し込み
             </button>
           ) : (
-            <button
-              disabled
-              className={cx("left-btn-bookmark")}
-              onClick={handleBookmark}
-            >
+            <button disabled className={cx("left-btn-bookmark")}>
               仮申し込みをした
             </button>
           )}

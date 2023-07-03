@@ -53,7 +53,7 @@ function Search() {
     } else {
       console.log("appliedFilters: ", appliedFilters);
       let res = await teacherApi.searchTeacher(appliedFilters);
-      console.log("res1: ", res);
+      // console.log("res1: ", res);
       setTeacherSearch(res);
     }
   };
