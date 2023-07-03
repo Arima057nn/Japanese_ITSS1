@@ -4,7 +4,7 @@ const db = require("../services/db");
 async function createTeacherProfile(teacherProfileData) {
 	const query = `INSERT INTO TeacherProfile 
     (teacher_id, target_id, mail, phone_number, experience, level, tution, address, available_day, bio, available_time)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 	const values = [
 		teacherProfileData.teacher_id,
 		teacherProfileData.target_id,
