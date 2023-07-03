@@ -53,6 +53,14 @@ function Header() {
                 </NavLink>
               </NavDropdown.Item>
             )}
+
+            {!token && (
+              <NavDropdown.Item href="/signup">
+                <NavLink to="/signup" className="nav-link">
+                  Sign up
+                </NavLink>
+              </NavDropdown.Item>
+            )}
             {token && user.role === 3 && (
               <NavDropdown.Item href="/profile">
                 <NavLink to="/profile" className="nav-link">
