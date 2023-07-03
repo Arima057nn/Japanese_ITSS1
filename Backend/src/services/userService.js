@@ -43,6 +43,19 @@ async function getUserById(userId) {
 		throw error;
 	}
 }
+//getAllStudentWithBookmarkByTeacherProfileId
+async function getAllStudentWithBookmarkByTeacherProfileId(data) {
+	try {
+		const user = await User.getAllStudentWithBookmarkByTeacherProfileId(data);
+		return user;
+	} catch (error) {
+		console.error(
+			"Error retrieving student with Bookmark by teacher profile ID:",
+			error
+		);
+		throw error;
+	}
+}
 
 // Update a user
 async function updateUser(userId, userData) {
@@ -97,4 +110,5 @@ module.exports = {
 	register,
 	login,
 	getUserByRoleId,
+	getAllStudentWithBookmarkByTeacherProfileId,
 };

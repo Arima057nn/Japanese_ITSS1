@@ -88,6 +88,36 @@ async function getUserByUsername(username) {
 	}
 }
 
+async function getAllStudentWithBookmarkByTeacherProfileId(data) {
+	try {
+		const query = `SELECT 
+		User.id, 
+		User.user_name,
+    User.first_name,
+    User.last_name,
+    User.sex,
+    User.age,
+		Bookmark.teacher_profile_id, 
+		Bookmark.target_id, 
+		Bookmark.status
+	FROM 
+		User
+	JOIN 
+		Bookmark 
+		ON 
+		User.id = Bookmark.studentId
+	WHERE 
+		Bookmark.teacher_profile_id = ?
+		AND 
+		Bookmark.status = ?`;
+		const value = [data.teacher_profile_id, data.status];
+		const result = db.query(query, value);
+		return result;
+	} catch (error) {
+		throw error;
+	}
+}
+
 // Update a user
 async function updateUser(userId, userData) {
 	const data = await getUserById(userId);
@@ -206,4 +236,5 @@ module.exports = {
 	register,
 	login,
 	getUserByRoleId,
+	getAllStudentWithBookmarkByTeacherProfileId,
 };

@@ -61,6 +61,24 @@ router.get("/", async (req, res, next) => {
 		return res.status(500).json({ message: error.message });
 	}
 });
+//getAllStudentWithBookmarkByTeacherProfileId
+
+router.post("/bookmark", async (req, res, next) => {
+	try {
+		const users =
+			await userController.getAllStudentWithBookmarkByTeacherProfileId(
+				req.body
+			);
+		if (users) {
+			return res.status(200).json(users);
+		} else {
+			return res.status(404).json({ message: "User not found" });
+		}
+	} catch (error) {
+		console.error("Error while retrieving user", error.message);
+		return res.status(500).json({ message: error.message });
+	}
+});
 
 // Update a user
 router.put("/:id", async (req, res, next) => {

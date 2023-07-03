@@ -56,6 +56,22 @@ async function getUserById(userId) {
 		throw error;
 	}
 }
+//getAllStudentWithBookmarkByTeacherProfileId
+async function getAllStudentWithBookmarkByTeacherProfileId(data) {
+	try {
+		const user = await userService.getAllStudentWithBookmarkByTeacherProfileId(
+			data
+		);
+		if (user) {
+			return user;
+		} else {
+			res.status(404).json({ message: "User not found" });
+		}
+	} catch (error) {
+		console.error("Error while retrieving user:", error.message);
+		throw error;
+	}
+}
 
 // Update a user
 async function updateUser(userId, data) {
@@ -110,4 +126,5 @@ module.exports = {
 	register,
 	login,
 	getUserByRoleId,
+	getAllStudentWithBookmarkByTeacherProfileId,
 };
