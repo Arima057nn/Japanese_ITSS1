@@ -8,6 +8,6 @@ export const bookmarkApi = {
     return axiosClient.post(`/bookmarks/search`, bookmark);
   },
   deleteBookmark(bookmark) {
-    return axiosClient.delete(`/bookmarks/delete`, bookmark);
+    return axiosClient.delete(`/bookmarks/delete`, { data: bookmark });
   },
 };

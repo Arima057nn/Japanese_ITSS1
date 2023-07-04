@@ -36,7 +36,7 @@ function BookmarkTeacher() {
 
       <div className={cx("content2")}>
         {bookmarkList.map((teacher, i) => (
-          <ItemBookmark key={i} teacher={teacher} />
+          <ItemBookmark key={i} user={user} teacher={teacher} />
         ))}
       </div>
     </div>
