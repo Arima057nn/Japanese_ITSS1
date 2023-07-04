@@ -10,4 +10,7 @@ export const userApi = {
   updateUser(id, profile) {
     return axiosClient.put(`/users/${id}`, profile);
   },
+  getStudents(teacher) {
+    return axiosClient.post(`/users/bookmark`, teacher);
+  },
 };
