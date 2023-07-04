@@ -17,4 +17,8 @@ export const teacherApi = {
   getBookmarkTeachers(bookmark) {
     return axiosClient.post(`/teacher-profiles/bookmark`, bookmark);
   },
+
+  createTeacher(info) {
+    return axiosClient.post(`/teacher-profiles`, info);
+  },
 };

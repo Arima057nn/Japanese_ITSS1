@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import styles from "./ProfileSetting.module.scss";
+import styles from "./ProfileCreate.module.scss";
 import { useEffect, useState } from "react";
 import { levels, days, times } from "../../../data/target";
 import { teacherApi } from "../../../services/teacher-api";
@@ -11,16 +11,17 @@ import { userApi } from "../../../services/user-api";
 
 const cx = classNames.bind(styles);
 
-function ProfileSetting() {
-  const [teacher, setTeacher] = useState({});
+function ProfileCreate() {
+  const [teacher, setTeacher] = useState({
+    teacher_id: parseInt(localStorage.getItem("id")),
+    bio: "Bio12",
+    experience: "haha",
+  });
   const [profile, setProfile] = useState({});
   const [resultLevel, setResultLevel] = useState([]);
   const [resultDay, setResultDay] = useState([]);
   const [resultTime, setResultTime] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
-    getTeacher();
-  }, []);
 
   useEffect(() => {
     const level = levels.find((item) => item.id === teacher.level);
@@ -37,17 +38,12 @@ function ProfileSetting() {
     setResultTime(time ? [time] : []);
   }, [teacher.available_time]);
 
-  const getTeacher = async () => {
-    let res = await teacherApi.getTeacher(localStorage.getItem("id"));
-    console.log("profile: ", res);
-    setTeacher(res);
-  };
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
-    let res = await teacherApi.updateProfile(teacher.id, teacher);
-    let res2 = await userApi.updateUser(teacher.teacher_id, profile);
+    let res = await teacherApi.createTeacher(teacher);
+    let res2 = await userApi.updateUser(localStorage.getItem("id"), profile);
     navigate("/profile");
-    toast.success("編集しました !");
+    toast.success("Createしました !");
   };
 
   return (
@@ -66,7 +62,6 @@ function ProfileSetting() {
               <input
                 value={teacher.last_name}
                 onChange={(e) => {
-                  setTeacher({ ...teacher, last_name: e.target.value });
                   setProfile({ ...profile, last_name: e.target.value });
                 }}
                 style={{ width: 100, padding: "1px 4px", fontSize: 20 }}
@@ -74,7 +69,6 @@ function ProfileSetting() {
               <input
                 value={teacher.first_name}
                 onChange={(e) => {
-                  setTeacher({ ...teacher, first_name: e.target.value });
                   setProfile({ ...profile, first_name: e.target.value });
                 }}
                 style={{ width: 100, padding: "1px 4px", fontSize: 20 }}
@@ -87,7 +81,6 @@ function ProfileSetting() {
               <input
                 value={teacher.age}
                 onChange={(e) => {
-                  setTeacher({ ...teacher, age: e.target.value });
                   setProfile({ ...profile, age: e.target.value });
                 }}
                 style={{ width: 80, padding: 4, fontSize: 20 }}
@@ -98,7 +91,6 @@ function ProfileSetting() {
               <select
                 name=""
                 onChange={(e) => {
-                  setTeacher({ ...teacher, sex: e.target.value });
                   setProfile({ ...profile, sex: e.target.value });
                 }}
               >
@@ -115,7 +107,7 @@ function ProfileSetting() {
             <h4>
               :{" "}
               <input
-                value={teacher.mail}
+                value={teacher.mail ?? ""}
                 required
                 type="text"
                 style={{ width: 220, padding: 4, fontSize: 20 }}
@@ -249,9 +241,27 @@ function ProfileSetting() {
               <option value="500">500</option>
             </select>
           </div>
+
+          <div className={cx("profile-info-mt10")}>
+            <h4 className={cx("pd-r35")}>目的</h4>
+            <select
+              name=""
+              onChange={(e) => {
+                setTeacher({
+                  ...teacher,
+                  target_id: e.target.value,
+                });
+              }}
+            >
+              <option className={cx("option-header")} value={1}></option>
+              <option value="1">日常会話</option>
+              <option value="2">ビジネス</option>
+              <option value="3">ベトナム語能力の試験</option>
+            </select>
+          </div>
         </div>
       </form>
     </>
   );
 }
-export default ProfileSetting;
+export default ProfileCreate;

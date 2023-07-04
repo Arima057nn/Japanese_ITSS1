@@ -15,6 +15,7 @@ import { UserContext } from "./contexts/UserContext";
 import ManagerUser from "./pages/Admin/ManagerUser";
 import TeacherProfile from "./pages/Teacher/TeacherProfile";
 import TeacherProfileSetting from "./pages/Teacher/TeacherProfileSetting";
+import TeacherProfileCreate from "./pages/Teacher/TeacherProfileCreate";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -22,7 +23,6 @@ function App() {
 
   const { user, loginContext } = useContext(UserContext);
   console.log("<<< user :", user);
-  console.log("<<< token :", token);
   useEffect(() => {
     if (localStorage.getItem("token")) {
       loginContext(
@@ -75,6 +75,17 @@ function App() {
           element={
             role === "3" ? (
               <TeacherProfileSetting />
+            ) : (
+              <h1>Khong the truy cap hay dang nhap voi vai tro la giao vien</h1>
+            )
+          }
+        />
+
+        <Route
+          path="/profile/create"
+          element={
+            role === "3" ? (
+              <TeacherProfileCreate />
             ) : (
               <h1>Khong the truy cap hay dang nhap voi vai tro la giao vien</h1>
             )
