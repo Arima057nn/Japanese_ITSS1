@@ -10,4 +10,7 @@ export const bookmarkApi = {
   deleteBookmark(bookmark) {
     return axiosClient.delete(`/bookmarks/delete`, { data: bookmark });
   },
+  updateBookmark(bookmark) {
+    return axiosClient.put(`bookmarks/update`, bookmark);
+  },
 };

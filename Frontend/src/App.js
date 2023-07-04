@@ -81,9 +81,9 @@ function App() {
           }
         />
         {/* 7 Trưởng */}
-        <Route path="/student/bookmark" element={<BookmarkList />} />
+        <Route path="/bookmarks" element={<BookmarkList />} />
         {/* 8 Tú*/}
-        <Route path="/teacher/studentlist" element={<StudentList />} />
+        <Route path="/studentlist" element={<StudentList />} />
         {/* 9 Trung */}
         {/* <PrivateRoute path="/admin/manager" element={<UserList />} /> */}
         <Route

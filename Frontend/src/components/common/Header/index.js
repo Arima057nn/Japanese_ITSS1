@@ -68,6 +68,14 @@ function Header() {
                 </NavLink>
               </NavDropdown.Item>
             )}
+
+            {token && user.role === 3 && (
+              <NavDropdown.Item href="/studentlist">
+                <NavLink to="/studentlist" className="nav-link">
+                  StudentList
+                </NavLink>
+              </NavDropdown.Item>
+            )}
             {token && user.role === 2 && (
               <NavDropdown.Item href="/home">
                 <NavLink to="/home" className="nav-link">
@@ -76,8 +84,8 @@ function Header() {
               </NavDropdown.Item>
             )}
             {token && user.role === 2 && (
-              <NavDropdown.Item href="/student/bookmark">
-                <NavLink to="/student/bookmark" className="nav-link">
+              <NavDropdown.Item href="/bookmarks">
+                <NavLink to="/bookmarks" className="nav-link">
                   ブックマークしたリスト
                 </NavLink>
               </NavDropdown.Item>
