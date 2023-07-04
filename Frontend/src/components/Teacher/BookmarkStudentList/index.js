@@ -8,10 +8,12 @@ const cx = classNames.bind(styles);
 
 function BookmarkStudentList() {
   const [studentList, setStudentList] = useState([]);
+  const [studentList1, setStudentList1] = useState([]);
   const [teacher, setTeacher] = useState({});
   useEffect(() => {
     if (teacher.id) {
-      getStudentList();
+      getStudentList(0);
+      getStudentList(1);
     }
   }, [teacher.id]);
 
@@ -25,13 +27,19 @@ function BookmarkStudentList() {
     setTeacher(res);
   };
 
-  const getStudentList = async () => {
+  const getStudentList = async (status) => {
     let res = await userApi.getStudents({
       teacher_profile_id: teacher.id,
-      status: 0,
+      status: status,
     });
-    setStudentList(res);
+    if (status === 0) {
+      setStudentList(res);
+    }
+    if (status === 1) {
+      setStudentList1(res);
+    }
   };
+
   return (
     <div className={cx("content0")}>
       <div className={cx("content1")}>
@@ -39,6 +47,9 @@ function BookmarkStudentList() {
       </div>
 
       <div className={cx("content2")}>
+        {studentList1.map((student, i) => (
+          <ItemStudent key={i} student={student} teacher={teacher} />
+        ))}
         {studentList.map((student, i) => (
           <ItemStudent key={i} student={student} teacher={teacher} />
         ))}

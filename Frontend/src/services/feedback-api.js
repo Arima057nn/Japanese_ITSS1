@@ -8,4 +8,8 @@ export const feedbackApi = {
   getFeedback(id) {
     return axiosClient.get(`/feedbacks/${id}`);
   },
+
+  createFeedback(feedback) {
+    return axiosClient.post(`/feedbacks`, feedback);
+  },
 };

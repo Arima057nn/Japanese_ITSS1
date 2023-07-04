@@ -116,3 +116,44 @@
   border: none;
   background-color: #dbdad8;
 }
+
+
+.feedback{
+ height: 500px;
+ display: flex;
+ justify-content: center;
+ flex-direction: row;
+}
+
+.avatar{
+  width: 150px;
+  margin-right: 24px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.content{
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button{
+  display: flex;
+  justify-content:end;
+  margin-top: 20px;
+
+}
+
+
+.img-profile1 {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.empty{
+  width: 60px; 
+}
