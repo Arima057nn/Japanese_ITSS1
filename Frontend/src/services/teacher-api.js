@@ -21,4 +21,8 @@ export const teacherApi = {
   createTeacher(info) {
     return axiosClient.post(`/teacher-profiles`, info);
   },
+
+  deleteTeacher(id){
+    return axiosClient.delete(`/teacher-profiles/${id}`,);
+  }
 };

@@ -7,6 +7,9 @@ export const userApi = {
   getUsers() {
     return axiosClient.get(`/users`);
   },
+  getUser(id) {
+    return axiosClient.get(`/users/${id}`);
+  },
   updateUser(id, profile) {
     return axiosClient.put(`/users/${id}`, profile);
   },

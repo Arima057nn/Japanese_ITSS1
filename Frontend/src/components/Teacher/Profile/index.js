@@ -8,7 +8,8 @@ import { feedbackApi } from "../../../services/feedback-api";
 import { Backdrop, Box, Button, Fade, Modal } from "@mui/material";
 import Feedback from "../../Feedback";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
@@ -25,6 +26,7 @@ const style = {
 };
 
 function Profile() {
+  const navigate = useNavigate();
   const [teacher, setTeacher] = useState({});
   const [feedbacks, setFeedbacks] = useState([]);
   const [resultLevel, setResultLevel] = useState([]);
@@ -70,6 +72,16 @@ function Profile() {
     console.log("<<<<<<<,id: ", teacher.id);
     let res = await feedbackApi.getFeedback(teacher.id);
     setFeedbacks(res);
+    console.log("fb: ", res);
+  };
+
+  const handleDelete = async () => {
+    console.log("<<<<<<<,id: ", teacher.id);
+    let res = await teacherApi.deleteTeacher(teacher.id);
+    toast.success("Delete Profile Success !");
+    navigate("/profile/create");
+    // navigate("/home");
+  
     console.log("fb: ", res);
   };
 
@@ -143,6 +155,11 @@ function Profile() {
             <button className={cx("btn")} onClick={handleOpen}>
               評価を見る
             </button>
+            {!start &&
+              <button className={cx("btn")} onClick={handleDelete}>
+                Delete
+              </button>
+            }
           </div>
         </div>
       </div>

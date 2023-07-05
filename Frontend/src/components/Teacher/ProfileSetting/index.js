@@ -96,7 +96,7 @@ function ProfileSetting() {
             <h4>
               性別 :{" "}
               <select
-                name=""
+               
                 onChange={(e) => {
                   setTeacher({ ...teacher, sex: e.target.value });
                   setProfile({ ...profile, sex: e.target.value });
@@ -117,7 +117,7 @@ function ProfileSetting() {
               <input
                 value={teacher.mail}
                 required
-                type="text"
+                type="email"
                 style={{ width: 220, padding: 4, fontSize: 20 }}
                 onChange={(e) =>
                   setTeacher({ ...teacher, mail: e.target.value })
@@ -153,7 +153,7 @@ function ProfileSetting() {
           <div className={cx("profile-info")}>
             <h4 className={cx("pd-r15")}>レベル</h4>
             <select
-              name=""
+             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -173,7 +173,7 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>曜日</h4>
             <select
-              name=""
+             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -196,7 +196,7 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>時間</h4>
             <select
-              name=""
+             
               className={cx("chung")}
               onChange={(e) => {
                 setTeacher({
@@ -217,7 +217,7 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>場所</h4>
             <select
-              name=""
+             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -233,7 +233,7 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>料金</h4>
             <select
-              name=""
+             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,

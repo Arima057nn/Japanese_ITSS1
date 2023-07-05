@@ -42,8 +42,12 @@ function ProfileCreate() {
     e.preventDefault();
     let res = await teacherApi.createTeacher(teacher);
     let res2 = await userApi.updateUser(localStorage.getItem("id"), profile);
-    navigate("/profile");
-    toast.success("Createしました !");
+    if (res.status === 500) {
+      toast.error("Vui long nhap day du thong tin");
+    } else {
+      navigate("/profile");
+      toast.success("Createしました !");
+    }
   };
 
   return (
@@ -79,6 +83,8 @@ function ProfileCreate() {
             <h4 style={{ paddingRight: 58 }}>
               歳 :{" "}
               <input
+                type="number"
+                required
                 value={teacher.age}
                 onChange={(e) => {
                   setProfile({ ...profile, age: e.target.value });
@@ -89,13 +95,14 @@ function ProfileCreate() {
             <h4>
               性別 :{" "}
               <select
-                name=""
+                required
+
                 onChange={(e) => {
                   setProfile({ ...profile, sex: e.target.value });
                 }}
               >
                 <option className={cx("option-header")}>
-                  {teacher.sex === "Male" ? "男の人" : "女の人"}
+
                 </option>
                 <option value="Male">男の人</option>
                 <option value="Famale">女の人</option>
@@ -109,7 +116,7 @@ function ProfileCreate() {
               <input
                 value={teacher.mail ?? ""}
                 required
-                type="text"
+                type="email"
                 style={{ width: 220, padding: 4, fontSize: 20 }}
                 onChange={(e) =>
                   setTeacher({ ...teacher, mail: e.target.value })
@@ -122,8 +129,9 @@ function ProfileCreate() {
             <h4>
               :{" "}
               <input
+                required
                 value={teacher.phone_number}
-                type="text"
+                type="tel"
                 onChange={(e) =>
                   setTeacher({ ...teacher, phone_number: e.target.value })
                 }
@@ -145,7 +153,8 @@ function ProfileCreate() {
           <div className={cx("profile-info")}>
             <h4 className={cx("pd-r15")}>レベル</h4>
             <select
-              name=""
+
+              required
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -165,7 +174,8 @@ function ProfileCreate() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>曜日</h4>
             <select
-              name=""
+              required
+
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -188,7 +198,8 @@ function ProfileCreate() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>時間</h4>
             <select
-              name=""
+
+              required
               className={cx("chung")}
               onChange={(e) => {
                 setTeacher({
@@ -198,7 +209,7 @@ function ProfileCreate() {
               }}
             >
               <option className={cx("option-header")}>
-                {resultTime[0] && <> {resultTime[0].time_name}</>}
+
               </option>
               <option value="Morning">朝</option>
               <option value="Noon">昼</option>
@@ -209,7 +220,8 @@ function ProfileCreate() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>場所</h4>
             <select
-              name=""
+              required
+
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -217,7 +229,7 @@ function ProfileCreate() {
                 });
               }}
             >
-              <option className={cx("option-header")}>{teacher.address}</option>
+              <option className={cx("option-header")}></option>
               <option value="Ha Noi">Ha Noi</option>
               <option value="Ho Chi Minh">Ho Chi Minh</option>
             </select>
@@ -225,7 +237,8 @@ function ProfileCreate() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>料金</h4>
             <select
-              name=""
+              required
+
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -233,7 +246,7 @@ function ProfileCreate() {
                 });
               }}
             >
-              <option className={cx("option-header")}>{teacher.tution} </option>
+              <option className={cx("option-header")}> </option>
               <option value="100">100</option>
               <option value="200">200</option>
               <option value="300">300</option>
@@ -245,7 +258,8 @@ function ProfileCreate() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>目的</h4>
             <select
-              name=""
+              required
+
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -253,7 +267,7 @@ function ProfileCreate() {
                 });
               }}
             >
-              <option className={cx("option-header")} value={1}></option>
+              <option className={cx("option-header")}></option>
               <option value="1">日常会話</option>
               <option value="2">ビジネス</option>
               <option value="3">ベトナム語能力の試験</option>
