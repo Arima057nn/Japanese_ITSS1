@@ -58,7 +58,7 @@ function Header() {
             {!token && (
               <NavDropdown.Item href="/signup">
                 <NavLink to="/signup" className="nav-link">
-                  Sign up
+                  サインアップ
                 </NavLink>
               </NavDropdown.Item>
             )}
