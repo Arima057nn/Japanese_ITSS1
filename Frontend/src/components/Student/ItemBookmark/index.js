@@ -40,7 +40,9 @@ function ItemBookmark({ user, teacher }) {
           />
         </div>
         <div className={cx("cot2")}>
-          <h4>{teacher.mail}</h4>
+          <h4>
+            {teacher.last_name} {teacher.first_name}
+          </h4>
           <div className={cx("rating")}>
             <i className={cx("fa fa-star")}></i>
             <i className={cx("fa fa-star")}></i>

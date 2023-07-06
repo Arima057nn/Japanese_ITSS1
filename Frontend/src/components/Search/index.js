@@ -286,9 +286,22 @@ function Search() {
           </div>
         </div>
         <div className={cx("content2")}>
-          {teacherSearch.map((teacher, i) => (
-            <ItemInfo key={i} teacher={teacher} />
-          ))}
+          {teacherSearch.length === 0 ? (
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "40px",
+              }}
+            >
+              <h1>教師を検索する結果はありません！</h1>
+            </div>
+          ) : (
+            teacherSearch.map((teacher, i) => (
+              <ItemInfo key={i} teacher={teacher} />
+            ))
+          )}
         </div>
       </div>
     </>

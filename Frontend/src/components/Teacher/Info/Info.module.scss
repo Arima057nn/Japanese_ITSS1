@@ -98,25 +98,24 @@
   display: flex;
 }
 .left-btn {
-  font-weight: bold;
-    padding: 8px 36px;
-  margin: 55px 135px;
-  cursor: pointer;
-  border-radius: 4px;
-  border: none;
-  &:hover {
-    background-color: #dbdad8;
-  }
+ 
+  
+  margin: 55px;
+  margin-left: 165px;
+  
+ 
+  
 }
 .left-btn-bookmark {
   font-weight: bold;
-  padding: 8px 24px;
+  font-size: 16px;
+  padding: 10px 24px;
   margin: 55px 135px;
   border-radius: 8px;
   border: none;
   background-color: #dbdad8;
   &:disabled{
-    background-color: #94AF9F;
+    background-color: #FFB84C;
   }
 }
 

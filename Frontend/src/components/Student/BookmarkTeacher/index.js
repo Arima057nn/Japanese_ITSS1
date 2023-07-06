@@ -35,9 +35,13 @@ function BookmarkTeacher() {
       </div>
 
       <div className={cx("content2")}>
-        {bookmarkList.map((teacher, i) => (
-          <ItemBookmark key={i} user={user} teacher={teacher} />
-        ))}
+        {bookmarkList.length === 0 ? (
+          <h1>仮申し込みました教師はありません !</h1>
+        ) : (
+          bookmarkList.map((teacher, i) => (
+            <ItemBookmark key={i} user={user} teacher={teacher} />
+          ))
+        )}
       </div>
     </div>
   );

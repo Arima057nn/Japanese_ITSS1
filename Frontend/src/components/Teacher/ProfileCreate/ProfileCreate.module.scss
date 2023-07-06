@@ -23,12 +23,14 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 40px 0;
+
 }
 .left {
   background-color: white;
   width: 650px;
   // height: 550px;
-  padding: 25px 25px 25px 5px;
+  padding: 25px 25px 35px 8px;
   border-radius: 8px;
 }
 

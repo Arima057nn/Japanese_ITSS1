@@ -112,7 +112,7 @@ function Login() {
           </div>
         </form>
 
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 20, fontSize: 20 }}>
           <Link to="/signup">登録</Link>
         </div>
       </div>

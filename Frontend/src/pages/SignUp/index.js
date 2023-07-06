@@ -104,14 +104,10 @@ function SignUp() {
           </div>
 
           <div>
-            <input
-              className={cx("input-form")}
-              type="submit"
-              value="登録"
-            />
+            <input className={cx("input-form")} type="submit" value="登録" />
           </div>
         </form>
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 20, fontSize: 20 }}>
           <Link to="/login">ログイン</Link>
         </div>
       </div>

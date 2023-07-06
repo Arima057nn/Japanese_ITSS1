@@ -47,12 +47,24 @@ function BookmarkStudentList() {
       </div>
 
       <div className={cx("content2")}>
-        {studentList1.map((student, i) => (
-          <ItemStudent key={i} student={student} teacher={teacher} />
-        ))}
-        {studentList.map((student, i) => (
-          <ItemStudent key={i} student={student} teacher={teacher} />
-        ))}
+        {studentList1.length === 0 && studentList.length === 0 ? (
+          <h1
+            style={{
+              marginTop: "40px",
+            }}
+          >
+            あなたを申し込みました学生はありません !
+          </h1>
+        ) : (
+          <>
+            {studentList1.map((student, i) => (
+              <ItemStudent key={i} student={student} teacher={teacher} />
+            ))}
+            {studentList.map((student, i) => (
+              <ItemStudent key={i} student={student} teacher={teacher} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
