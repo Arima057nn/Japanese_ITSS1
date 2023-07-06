@@ -3,7 +3,6 @@ import styles from "./ProfileCreate.module.scss";
 import { useEffect, useState } from "react";
 import { levels, days, times } from "../../../data/target";
 import { teacherApi } from "../../../services/teacher-api";
-import { FaStar } from "react-icons/fa";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
@@ -46,7 +45,7 @@ function ProfileCreate() {
       toast.error("Vui long nhap day du thong tin");
     } else {
       navigate("/profile");
-      toast.success("Createしました !");
+      toast.success("プロフィールを作成しました !");
     }
   };
 
@@ -96,14 +95,11 @@ function ProfileCreate() {
               性別 :{" "}
               <select
                 required
-
                 onChange={(e) => {
                   setProfile({ ...profile, sex: e.target.value });
                 }}
               >
-                <option className={cx("option-header")}>
-
-                </option>
+                <option className={cx("option-header")}></option>
                 <option value="Male">男の人</option>
                 <option value="Famale">女の人</option>
               </select>
@@ -153,7 +149,6 @@ function ProfileCreate() {
           <div className={cx("profile-info")}>
             <h4 className={cx("pd-r15")}>レベル</h4>
             <select
-
               required
               onChange={(e) => {
                 setTeacher({
@@ -175,7 +170,6 @@ function ProfileCreate() {
             <h4 className={cx("pd-r35")}>曜日</h4>
             <select
               required
-
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -198,7 +192,6 @@ function ProfileCreate() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>時間</h4>
             <select
-
               required
               className={cx("chung")}
               onChange={(e) => {
@@ -208,9 +201,7 @@ function ProfileCreate() {
                 });
               }}
             >
-              <option className={cx("option-header")}>
-
-              </option>
+              <option className={cx("option-header")}></option>
               <option value="Morning">朝</option>
               <option value="Noon">昼</option>
               <option value="Evening">夕方</option>
@@ -221,7 +212,6 @@ function ProfileCreate() {
             <h4 className={cx("pd-r35")}>場所</h4>
             <select
               required
-
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -238,7 +228,6 @@ function ProfileCreate() {
             <h4 className={cx("pd-r35")}>料金</h4>
             <select
               required
-
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -259,7 +248,6 @@ function ProfileCreate() {
             <h4 className={cx("pd-r35")}>目的</h4>
             <select
               required
-
               onChange={(e) => {
                 setTeacher({
                   ...teacher,

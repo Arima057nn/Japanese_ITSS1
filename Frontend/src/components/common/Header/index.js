@@ -34,13 +34,14 @@ function Header() {
             sx={{ width: 48, height: 48, margin: "0 0 0 12px" }}
           />
 
-          <NavDropdown title="">
+          <NavDropdown style={{ marginLeft: 4, fontSize: 20 }}>
             {token && user && (
               <Dropdown.ItemText
                 style={{
                   fontWeight: 600,
                   fontSize: 18,
                   borderBottom: "1px soild red",
+                  backgroundColor: "#E4DCCF",
                 }}
               >
                 <AccountCircleIcon /> {user.username}
@@ -86,7 +87,7 @@ function Header() {
             {token && user.role === 2 && (
               <NavDropdown.Item href="/bookmarks">
                 <NavLink to="/bookmarks" className="nav-link">
-                  ブックマークしたリスト
+                  ブックマーク一覧
                 </NavLink>
               </NavDropdown.Item>
             )}

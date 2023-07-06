@@ -43,7 +43,7 @@ function BookmarkStudentList() {
   return (
     <div className={cx("content0")}>
       <div className={cx("content1")}>
-        <h1 className={cx("tittle")}>BookmarkStudentList</h1>
+        <h1 className={cx("tittle")}>これはあなたを申し込みました学生です。</h1>
       </div>
 
       <div className={cx("content2")}>

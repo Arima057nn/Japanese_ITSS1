@@ -23,7 +23,7 @@ function SignUp() {
   const handleRegister = async (event) => {
     event.preventDefault();
     if (account.password !== confirmPassword) {
-      setErrorMessage("Mật khẩu không khớp");
+      setErrorMessage("パスワードと同じくない !");
     } else {
       // Thực hiện các thao tác khi mật khẩu được xác nhận thành công
       // Ví dụ: Gửi dữ liệu đăng ký đến máy chủ
@@ -34,7 +34,7 @@ function SignUp() {
         if (res.status === 500) {
           toast.error(res.data.message);
         } else {
-          toast.success("Sign up success !");
+          toast.success("サインアップしました !");
           navigate("/login");
         }
       } catch (error) {

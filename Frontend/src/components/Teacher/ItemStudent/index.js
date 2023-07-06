@@ -17,9 +17,9 @@ function ItemStudent({ student, teacher }) {
         studentId: student.id,
         teacher_profile_id: teacher.id,
       });
-      console.log("Success: ", res);
+
       setIsDeleted(true);
-      toast.success("Delete Success !");
+      toast.success("ブックマークを拒絶しました !");
       // Perform any additional actions after successful deletion
     } catch (error) {
       console.log("Error deleting bookmark: ", error);
@@ -34,7 +34,7 @@ function ItemStudent({ student, teacher }) {
         status: 1,
       });
       setIsAccepted(1);
-      toast.success("Accept Success !");
+      toast.success("ブックマークを承認しました !");
     } catch (error) {
       console.log("Error deleting bookmark: ", error);
     }

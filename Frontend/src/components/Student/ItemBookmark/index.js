@@ -22,9 +22,8 @@ function ItemBookmark({ user, teacher }) {
         studentId: user.userId,
         teacher_profile_id: teacher.id,
       });
-      console.log("Success: ", res);
       setIsDeleted(true);
-      toast.success("Delete Success !");
+      toast.success("ブックマークをキャンセルしました !");
       // Perform any additional actions after successful deletion
     } catch (error) {
       console.log("Error deleting bookmark: ", error);

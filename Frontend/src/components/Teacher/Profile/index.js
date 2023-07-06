@@ -69,19 +69,17 @@ function Profile() {
   const handleClose = () => setOpen(false);
 
   const getFeedbacks = async () => {
-    console.log("<<<<<<<,id: ", teacher.id);
     let res = await feedbackApi.getFeedback(teacher.id);
     setFeedbacks(res);
     console.log("fb: ", res);
   };
 
   const handleDelete = async () => {
-    console.log("<<<<<<<,id: ", teacher.id);
     let res = await teacherApi.deleteTeacher(teacher.id);
-    toast.success("Delete Profile Success !");
+    toast.success("プロフィールを削除しました !");
     navigate("/profile/create");
     // navigate("/home");
-  
+
     console.log("fb: ", res);
   };
 
@@ -155,11 +153,11 @@ function Profile() {
             <button className={cx("btn")} onClick={handleOpen}>
               評価を見る
             </button>
-            {!start &&
+            {!start && (
               <button className={cx("btn")} onClick={handleDelete}>
                 Delete
               </button>
-            }
+            )}
           </div>
         </div>
       </div>

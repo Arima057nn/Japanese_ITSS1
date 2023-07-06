@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
 import styles from "./Info.module.scss";
-import { FaStar } from "react-icons/fa";
 import { teacherApi } from "../../../services/teacher-api";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -55,7 +54,7 @@ function Info() {
   };
   const handleOpenFb = () => {
     if (status === 1) setOpenFb(true);
-    if (status === 0) toast.error("Khong the danh gia !");
+    // if (status === 0) toast.error("Khong the danh gia !");
   };
   const handleClose = () => setOpen(false);
   const handleCloseFb = () => setOpenFb(false);
@@ -143,7 +142,7 @@ function Info() {
       feedback_content: content,
       rating: star,
     });
-    toast.success("Feedback success !");
+    toast.success("フィードバックしました !");
     setStar(0);
     handleCloseFb();
     handleOpen();
@@ -217,9 +216,11 @@ function Info() {
             <button className={cx("btn")} onClick={handleOpen}>
               評価を見る
             </button>
-            <button className={cx("btn")} onClick={handleOpenFb}>
-              評価する
-            </button>
+            {status === 1 && (
+              <button className={cx("btn")} onClick={handleOpenFb}>
+                評価する
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -267,7 +268,7 @@ function Info() {
                 ></img>
               </div>
               <div className={cx("content")}>
-                <h2>Pham Tien Dung</h2>
+                <h2>{localStorage.getItem("username")}</h2>
                 <Box
                   sx={{
                     "& > legend": { mt: 0 },
@@ -298,18 +299,18 @@ function Info() {
                 <div className={cx("button")}>
                   <Button
                     variant="contained"
-                    sx={{ marginLeft: 4 }}
-                    onClick={handleCreateFeedback}
+                    color="error"
+                    sx={{ marginLeft: 4, fontSize: 20 }}
+                    onClick={handleCloseFb}
                   >
-                    Feedback
+                    キャンセル
                   </Button>
                   <Button
                     variant="contained"
-                    color="error"
-                    sx={{ marginLeft: 4 }}
-                    onClick={handleCloseFb}
+                    sx={{ marginLeft: 4, fontSize: 20 }}
+                    onClick={handleCreateFeedback}
                   >
-                    Cancel
+                    評価する
                   </Button>
                 </div>
               </div>

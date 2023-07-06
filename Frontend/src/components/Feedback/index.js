@@ -4,7 +4,6 @@ import { Avatar } from "@mui/material";
 const cx = classNames.bind(styles);
 
 function Feedback({ feedback }) {
-  console.log("fBB: ", feedback);
   return (
     <>
       {feedback.map((fb, i) => (
@@ -14,9 +13,7 @@ function Feedback({ feedback }) {
           </div>
 
           <div className={cx("cot2")}>
-            <h4>
-              {fb.last_name} {fb.first_name}
-            </h4>
+            <h4>{fb.user_name}</h4>
             <div className={cx("rating")}>
               {[...Array(5)].map((_star, i) => (
                 <i
@@ -28,11 +25,7 @@ function Feedback({ feedback }) {
                 />
               ))}
             </div>
-            <p>
-              {fb.feedback_content} Lorem ipsum dolor sit amet consectetur
-              adipisic elit. Tempora aperiam fuga dolorem consequa, sunt,
-              reiciendis quo neque dolores
-            </p>
+            <p>{fb.feedback_content}</p>
           </div>
         </div>
       ))}
