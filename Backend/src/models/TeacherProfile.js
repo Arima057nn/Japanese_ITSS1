@@ -90,6 +90,9 @@ async function getAllTeacherProfileWithBookmarkByStudentId(data) {
 		TeacherProfile.tution, 
 		TeacherProfile.address, 
 		TeacherProfile.available_day,
+		User.user_name,
+		User.first_name,
+		User.last_name,
 		Bookmark.studentId, 
 		Bookmark.teacher_profile_id, 
 		Bookmark.target_id, 
@@ -101,6 +104,10 @@ async function getAllTeacherProfileWithBookmarkByStudentId(data) {
 		Bookmark 
 		ON 
 		TeacherProfile.id = Bookmark.teacher_profile_id
+	JOIN
+		User
+		ON
+		TeacherProfile.teacher_id = User.id
 	WHERE 
 		Bookmark.studentId = ? 
 		AND 
