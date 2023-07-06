@@ -96,7 +96,6 @@ function ProfileSetting() {
             <h4>
               性別 :{" "}
               <select
-               
                 onChange={(e) => {
                   setTeacher({ ...teacher, sex: e.target.value });
                   setProfile({ ...profile, sex: e.target.value });
@@ -144,8 +143,8 @@ function ProfileSetting() {
           <div className={cx("header-profile")}>
             <h4 className={cx("profile-info")}>個人情報</h4>
             <div>
-              <Button variant="contained" type="submit">
-                Saved
+              <Button variant="contained" type="submit" sx={{ fontSize: 20 }}>
+                保存
               </Button>
             </div>
           </div>
@@ -153,7 +152,6 @@ function ProfileSetting() {
           <div className={cx("profile-info")}>
             <h4 className={cx("pd-r15")}>レベル</h4>
             <select
-             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -173,7 +171,6 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>曜日</h4>
             <select
-             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -196,7 +193,6 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>時間</h4>
             <select
-             
               className={cx("chung")}
               onChange={(e) => {
                 setTeacher({
@@ -217,7 +213,6 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>場所</h4>
             <select
-             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,
@@ -233,7 +228,6 @@ function ProfileSetting() {
           <div className={cx("profile-info-mt10")}>
             <h4 className={cx("pd-r35")}>料金</h4>
             <select
-             
               onChange={(e) => {
                 setTeacher({
                   ...teacher,

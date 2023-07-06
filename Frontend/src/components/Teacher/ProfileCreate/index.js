@@ -140,8 +140,8 @@ function ProfileCreate() {
           <div className={cx("header-profile")}>
             <h4 className={cx("profile-info")}>個人情報</h4>
             <div>
-              <Button variant="contained" type="submit">
-                Saved
+              <Button variant="contained" type="submit" sx={{ fontSize: 20 }}>
+                保存
               </Button>
             </div>
           </div>

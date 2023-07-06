@@ -117,8 +117,12 @@ function Profile() {
 
             {start ? (
               <Link to="/profile/create">
-                <Button variant="contained" color="success">
-                  Start
+                <Button
+                  variant="contained"
+                  color="success"
+                  sx={{ fontSize: 20 }}
+                >
+                  作成
                 </Button>
               </Link>
             ) : (
@@ -155,7 +159,7 @@ function Profile() {
             </button>
             {!start && (
               <button className={cx("btn")} onClick={handleDelete}>
-                Delete
+                削除
               </button>
             )}
           </div>

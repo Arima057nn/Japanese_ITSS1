@@ -73,7 +73,7 @@ function Header() {
             {token && user.role === 3 && (
               <NavDropdown.Item href="/studentlist">
                 <NavLink to="/studentlist" className="nav-link">
-                  StudentList
+                  学生リスト
                 </NavLink>
               </NavDropdown.Item>
             )}
