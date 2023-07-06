@@ -7,7 +7,13 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserContext } from "../../../contexts/UserContext";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import SensorOccupiedIcon from "@mui/icons-material/SensorOccupied";
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -32,7 +38,6 @@ function Header() {
         </Link>
         <div className={cx("option")}>
           <NotificationsNoneIcon sx={{ fontSize: 40 }} />
-          {/* {token && user.name && <h4>{user.name}</h4>} */}
           <Avatar
             alt="Remy Sharp"
             src={
@@ -55,13 +60,14 @@ function Header() {
                   backgroundColor: "#E4DCCF",
                 }}
               >
-                <AccountCircleIcon /> {user.username}
+                {/* {token.id === 3 ? "教師 :" : "学生 :"}  */}
+                {user.username}
               </Dropdown.ItemText>
             )}
             {!token && (
               <NavDropdown.Item href="/login">
                 <NavLink to="/login" className="nav-link">
-                  ログイン
+                  <LoginIcon sx={{ mr: 2, color: "#BACDDB" }} /> ログイン
                 </NavLink>
               </NavDropdown.Item>
             )}
@@ -69,6 +75,7 @@ function Header() {
             {!token && (
               <NavDropdown.Item href="/signup">
                 <NavLink to="/signup" className="nav-link">
+                  <SensorOccupiedIcon sx={{ mr: 2, color: "#BACDDB" }} />
                   サインアップ
                 </NavLink>
               </NavDropdown.Item>
@@ -76,6 +83,7 @@ function Header() {
             {token && user.role === 3 && (
               <NavDropdown.Item href="/profile">
                 <NavLink to="/profile" className="nav-link">
+                  <AccountBoxIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
                   プロフィール
                 </NavLink>
               </NavDropdown.Item>
@@ -84,6 +92,7 @@ function Header() {
             {token && user.role === 3 && (
               <NavDropdown.Item href="/studentlist">
                 <NavLink to="/studentlist" className="nav-link">
+                  <FeaturedPlayListIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
                   学生リスト
                 </NavLink>
               </NavDropdown.Item>
@@ -91,13 +100,14 @@ function Header() {
             {token && user.role === 2 && (
               <NavDropdown.Item href="/home">
                 <NavLink to="/home" className="nav-link">
-                  ホーム
+                  <HomeIcon sx={{ mr: 2, color: "#BACDDB" }} /> ホーム
                 </NavLink>
               </NavDropdown.Item>
             )}
             {token && user.role === 2 && (
               <NavDropdown.Item href="/bookmarks">
                 <NavLink to="/bookmarks" className="nav-link">
+                  <BookmarksIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
                   ブックマーク一覧
                 </NavLink>
               </NavDropdown.Item>
@@ -105,6 +115,7 @@ function Header() {
 
             {token && (
               <NavDropdown.Item onClick={() => handleLogout()}>
+                <LogoutIcon sx={{ mr: 2, color: "#BACDDB" }} />
                 ログアウト
               </NavDropdown.Item>
             )}
