@@ -4,6 +4,7 @@ import { useState } from "react";
 import { userApi } from "../../services/user-api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -25,8 +26,6 @@ function SignUp() {
     if (account.password !== confirmPassword) {
       setErrorMessage("パスワードと同じくない !");
     } else {
-      // Thực hiện các thao tác khi mật khẩu được xác nhận thành công
-      // Ví dụ: Gửi dữ liệu đăng ký đến máy chủ
       setErrorMessage("");
       try {
         let res = await userApi.register(account);
@@ -40,9 +39,6 @@ function SignUp() {
       } catch (error) {
         console.error(error);
       }
-
-      // console.log("Mật khẩu đã được xác nhận!");
-      // console.log("account: ", account);
     }
   };
 
@@ -111,10 +107,13 @@ function SignUp() {
             <input
               className={cx("input-form")}
               type="submit"
-              value="ログイン"
+              value="登録"
             />
           </div>
         </form>
+        <div style={{ marginTop: 20 }}>
+          <Link to="/login">ログイン</Link>
+        </div>
       </div>
     </div>
   );

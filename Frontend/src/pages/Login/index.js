@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./login.module.scss";
 import { useContext, useEffect, useState } from "react";
 import { authApi } from "../../services/auth-api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../../contexts/UserContext";
@@ -111,6 +111,10 @@ function Login() {
             />
           </div>
         </form>
+
+        <div style={{ marginTop: 20 }}>
+          <Link to="/signup">登録</Link>
+        </div>
       </div>
     </div>
   );

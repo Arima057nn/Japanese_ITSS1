@@ -26,10 +26,12 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 1100,
+  height: 600,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  borderRadius: 2,
   boxShadow: 24,
   p: 4,
+  overflow: "auto",
 };
 
 function Info() {
@@ -54,7 +56,6 @@ function Info() {
   };
   const handleOpenFb = () => {
     if (status === 1) setOpenFb(true);
-    // if (status === 0) toast.error("Khong the danh gia !");
   };
   const handleClose = () => setOpen(false);
   const handleCloseFb = () => setOpenFb(false);
@@ -213,13 +214,13 @@ function Info() {
             <p>{teacher.tution} 円</p>
           </div>
           <div className={cx("bottom-btn")}>
-            <button className={cx("btn")} onClick={handleOpen}>
-              評価を見る
-            </button>
+            <Button variant="contained" onClick={handleOpen}>
+            評価を見る
+              </Button>
             {status === 1 && (
-              <button className={cx("btn")} onClick={handleOpenFb}>
+              <Button variant="contained" onClick={handleOpenFb}>
                 評価する
-              </button>
+              </Button>
             )}
           </div>
         </div>

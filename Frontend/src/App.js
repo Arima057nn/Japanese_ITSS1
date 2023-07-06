@@ -36,18 +36,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* 1 done*/}
         <Route path="/login" element={<Login />} />
-        {/* 2 Quỳnh done*/}
         <Route path="/signup" element={<SignUp />} />
-        {/* 3 Quỳnh done*/}
         <Route
           path="/home"
           element={
             role !== 1 && role !== 3 ? <HomeSearch /> : <h1>Not found</h1>
           }
         />
-        {/* 4 Tú done*/}
         <Route
           path="/info/:id"
           element={
@@ -58,7 +54,6 @@ function App() {
             )
           }
         />
-        {/* done */}
         <Route
           path="/profile"
           element={
@@ -69,7 +64,6 @@ function App() {
             )
           }
         />
-        {/* done */}
         <Route
           path="/profile/setting"
           element={
@@ -80,7 +74,6 @@ function App() {
             )
           }
         />
-
         <Route
           path="/profile/create"
           element={
@@ -91,12 +84,8 @@ function App() {
             )
           }
         />
-        {/* 7 Trưởng */}
         <Route path="/bookmarks" element={<BookmarkList />} />
-        {/* 8 Tú*/}
         <Route path="/studentlist" element={<StudentList />} />
-        {/* 9 Trung */}
-        {/* <PrivateRoute path="/admin/manager" element={<UserList />} /> */}
         <Route
           path="/admin/manager"
           element={role === "1" ? <ManagerUser /> : <h1>Không thể truy cập</h1>}

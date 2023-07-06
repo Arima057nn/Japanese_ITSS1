@@ -18,11 +18,13 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 1200,
+  width: 1100,
+  height: 600,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  borderRadius: 2,
   boxShadow: 24,
   p: 4,
+  overflow: "auto",
 };
 
 function Profile() {
@@ -127,7 +129,7 @@ function Profile() {
               </Link>
             ) : (
               <Link to="/profile/setting">
-                <button className={cx("btn")}>編集</button>
+                <Button variant="contained" >編集</Button>
               </Link>
             )}
           </div>
@@ -154,13 +156,13 @@ function Profile() {
             <p>{teacher.tution} 円</p>
           </div>
           <div className={cx("bottom-btn")}>
-            <button className={cx("btn")} onClick={handleOpen}>
+            <Button  variant="contained" onClick={handleOpen}>
               評価を見る
-            </button>
+            </Button>
             {!start && (
-              <button className={cx("btn")} onClick={handleDelete}>
+              <Button variant="contained" color="error" onClick={handleDelete}>
                 削除
-              </button>
+              </Button>
             )}
           </div>
         </div>
