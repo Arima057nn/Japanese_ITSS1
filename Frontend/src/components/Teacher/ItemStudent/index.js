@@ -73,6 +73,9 @@ function ItemStudent({ student, teacher }) {
               sx={{
                 fontSize: 16,
                 fontWeight: 700,
+                height: 44,
+                width: 80,
+                borderRadius: 2,
               }}
             >
               承認
@@ -84,6 +87,7 @@ function ItemStudent({ student, teacher }) {
                 fontWeight: 700,
                 backgroundColor: "#F24C3D",
                 color: "#fff",
+                borderRadius: 2,
                 "&:hover": {
                   backgroundColor: "#F24C3D",
                   cursor: "text",
@@ -101,6 +105,9 @@ function ItemStudent({ student, teacher }) {
               sx={{
                 fontSize: 16,
                 fontWeight: 700,
+                width: 80,
+                height: 44,
+                borderRadius: 2,
               }}
             >
               拒絶

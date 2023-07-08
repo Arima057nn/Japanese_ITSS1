@@ -65,6 +65,9 @@ function ItemBookmark({ user, teacher }) {
               color: "black",
               fontSize: 16,
               fontWeight: 700,
+              width: 134,
+              height: 44,
+              borderRadius: 2,
               "&:hover": {
                 backgroundColor: "var(--primary-hover)",
               },
@@ -79,6 +82,9 @@ function ItemBookmark({ user, teacher }) {
             sx={{
               fontSize: 16,
               fontWeight: 700,
+              width: 134,
+              height: 44,
+              borderRadius: 2,
             }}
           >
             削除

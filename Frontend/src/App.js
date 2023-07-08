@@ -16,6 +16,7 @@ import ManagerUser from "./pages/Admin/ManagerUser";
 import TeacherProfile from "./pages/Teacher/TeacherProfile";
 import TeacherProfileSetting from "./pages/Teacher/TeacherProfileSetting";
 import TeacherProfileCreate from "./pages/Teacher/TeacherProfileCreate";
+import { toast } from "react-toastify";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -46,46 +47,32 @@ function App() {
         />
         <Route
           path="/info/:id"
-          element={
-            role === "2" ? (
-              <TeacherInfo />
-            ) : (
-              <h1>Khong the truy cap hay dang nhap voi vai tro la hoc sinh</h1>
-            )
-          }
+          element={role === "2" ? <TeacherInfo /> : <Navigate to="/login" />}
         />
         <Route
           path="/profile"
-          element={
-            role === "3" ? (
-              <TeacherProfile />
-            ) : (
-              <h1>Khong the truy cap hay dang nhap voi vai tro la giao vien</h1>
-            )
-          }
+          element={role === "3" ? <TeacherProfile /> : <Navigate to="/login" />}
         />
         <Route
           path="/profile/setting"
           element={
-            role === "3" ? (
-              <TeacherProfileSetting />
-            ) : (
-              <h1>Khong the truy cap hay dang nhap voi vai tro la giao vien</h1>
-            )
+            role === "3" ? <TeacherProfileSetting /> : <Navigate to="/login" />
           }
         />
         <Route
           path="/profile/create"
           element={
-            role === "3" ? (
-              <TeacherProfileCreate />
-            ) : (
-              <h1>Khong the truy cap hay dang nhap voi vai tro la giao vien</h1>
-            )
+            role === "3" ? <TeacherProfileCreate /> : <Navigate to="/login" />
           }
         />
-        <Route path="/bookmarks" element={<BookmarkList />} />
-        <Route path="/studentlist" element={<StudentList />} />
+        <Route
+          path="/bookmarks"
+          element={role === "2" ? <BookmarkList /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/studentlist"
+          element={role == "3" ? <StudentList /> : <Navigate to="/login" />}
+        />
         <Route
           path="/admin/manager"
           element={role === "1" ? <ManagerUser /> : <h1>Không thể truy cập</h1>}

@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./ItemInfo.module.scss";
 import { Avatar, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
@@ -9,7 +10,13 @@ function ItemInfo({ teacher }) {
   const navigate = useNavigate();
   const handleDetailInfo = (event) => {
     event.preventDefault();
-    navigate(`/info/${teacher.teacher_id}`);
+    if (localStorage.getItem("role") !== "2") {
+      console.log("kkkk: ", localStorage.getItem("id"));
+      toast.error("先にログインしてください！");
+      navigate("/login");
+    } else {
+      navigate(`/info/${teacher.teacher_id}`);
+    }
   };
   return (
     <div className={cx("giaovien")}>
@@ -46,6 +53,9 @@ function ItemInfo({ teacher }) {
             color: "black",
             fontSize: 16,
             fontWeight: 700,
+            width: 134,
+            height: 44,
+            borderRadius: 2,
             "&:hover": {
               backgroundColor: "var(--primary-hover)",
             },

@@ -291,6 +291,8 @@ function Info() {
       >
         <Fade in={open}>
           <Box sx={style}>
+            <p className={cx("tittle")}>フィードバック ~</p>
+
             {feedbacks.length === 0 ? (
               <div
                 style={{

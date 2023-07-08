@@ -28,6 +28,20 @@ const style = {
   overflow: "auto",
 };
 
+const styleDelete = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 440,
+  height: 200,
+  bgcolor: "background.paper",
+  borderRadius: 2,
+  boxShadow: 24,
+  p: 4,
+  overflow: "auto",
+};
+
 function Profile() {
   const navigate = useNavigate();
   const [teacher, setTeacher] = useState({});
@@ -38,6 +52,7 @@ function Profile() {
   const [start, setStart] = useState(false);
 
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
 
   useEffect(() => {
     getTeacher();
@@ -70,6 +85,7 @@ function Profile() {
   };
 
   const handleClose = () => setOpen(false);
+  const handleCloseDelete = () => setOpenDelete(false);
 
   const getFeedbacks = async () => {
     let res = await feedbackApi.getFeedback(teacher.id);
@@ -203,8 +219,15 @@ function Profile() {
               <Button
                 variant="contained"
                 color="error"
-                onClick={handleDelete}
-                sx={{ fontSize: 18 }}
+                onClick={() => {
+                  setOpenDelete(true);
+                }}
+                sx={{
+                  fontSize: 18,
+                  fontWeight: 600,
+                  width: 90,
+                  borderRadius: 2,
+                }}
               >
                 削除
               </Button>
@@ -227,6 +250,7 @@ function Profile() {
       >
         <Fade in={open}>
           <Box sx={style}>
+            <p className={cx("tittle")}>フィードバック ~</p>
             {feedbacks.length === 0 ? (
               <div
                 style={{
@@ -241,6 +265,73 @@ function Profile() {
             ) : (
               <Feedback feedback={feedbacks} />
             )}
+          </Box>
+        </Fade>
+      </Modal>
+
+      <Modal
+        aria-labelledby="spring-modal-title"
+        aria-describedby="spring-modal-description"
+        open={openDelete}
+        onClose={handleCloseDelete}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            TransitionComponent: Fade,
+          },
+        }}
+      >
+        <Fade in={openDelete}>
+          <Box sx={styleDelete}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: " space-around",
+                width: "100%",
+                height: "100%",
+                alignItems: "center",
+              }}
+            >
+              <h2>プロフィールを削除する ?</h2>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  width: "100%",
+                  height: "100%",
+                  alignItems: "center",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={handleDelete}
+                  sx={{
+                    fontSize: 18,
+                    fontWeight: 600,
+                    width: 130,
+                    borderRadius: 2,
+                  }}
+                >
+                  削除
+                </Button>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={handleCloseDelete}
+                  sx={{
+                    fontSize: 18,
+                    fontWeight: 600,
+                    width: 130,
+                    borderRadius: 2,
+                  }}
+                >
+                  キャンセル
+                </Button>
+              </div>
+            </div>
           </Box>
         </Fade>
       </Modal>
