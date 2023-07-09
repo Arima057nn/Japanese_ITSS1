@@ -12,4 +12,7 @@ export const feedbackApi = {
   createFeedback(feedback) {
     return axiosClient.post(`/feedbacks`, feedback);
   },
+  getRating(id) {
+    return axiosClient.get(`/feedbacks/rating/${id}`);
+  },
 };
