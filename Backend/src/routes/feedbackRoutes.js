@@ -25,7 +25,31 @@ router.get("/", async (req, res, next) => {
 		return res.status(500).json({ message: error.message });
 	}
 });
+//getListAvgRatingOfTeacherProfile,
+// getAvgRatingOfTeacherProfileByTeacherProfileId,
+router.get("/rating", async (req, res, next) => {
+	try {
+		const result = await feedbackController.getListAvgRatingOfTeacherProfile();
+		return res.status(200).json(result);
+	} catch (error) {
+		console.error("Error while getting avg rating:", error.message);
+		return res.status(500).json({ message: error.message });
+	}
+});
 
+router.get("/rating/:id", async (req, res, next) => {
+	try {
+		const teacher_profile_id = req.params.id;
+		const result =
+			await feedbackController.getAvgRatingOfTeacherProfileByTeacherProfileId(
+				teacher_profile_id
+			);
+		return res.status(200).json(result);
+	} catch (error) {
+		console.error("Error while getting avg rating:", error.message);
+		return res.status(500).json({ message: error.message });
+	}
+});
 // Read a feedback by ID
 router.get("/:id", async (req, res, next) => {
 	try {

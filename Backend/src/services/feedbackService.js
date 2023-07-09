@@ -55,7 +55,6 @@ async function deleteFeedback(feedbackId) {
 	try {
 		const feedback = await Feedback.deleteFeedback(feedbackId);
 		if (feedback) {
-			await feedback.destroy();
 			return { message: "Feedback deleted successfully" };
 		} else {
 			throw new Error(`Feedback with ID ${feedbackId} not found`);
@@ -66,10 +65,48 @@ async function deleteFeedback(feedbackId) {
 	}
 }
 
+async function getListAvgRatingOfTeacherProfile() {
+	try {
+		const feedback = await Feedback.getListAvgRatingOfTeacherProfile();
+		if (feedback) {
+			return feedback;
+		} else {
+			throw new Error(`Teacher Profile not found`);
+		}
+	} catch (error) {
+		console.error("Error get list Avg Rating from feedback:", error);
+		throw error;
+	}
+}
+
+async function getAvgRatingOfTeacherProfileByTeacherProfileId(
+	teacher_profile_id
+) {
+	try {
+		const feedback =
+			await Feedback.getAvgRatingOfTeacherProfileByTeacherProfileId(
+				teacher_profile_id
+			);
+		if (feedback) {
+			return feedback;
+		} else {
+			throw new Error(`Not found`);
+		}
+	} catch (error) {
+		console.error(
+			`Error get Avg of TeacherProfile with ID ${teacher_profile_id} feedback:`,
+			error
+		);
+		throw error;
+	}
+}
+
 module.exports = {
 	createFeedback,
 	getAllFeedbacks,
 	getFeedbackById,
 	updateFeedback,
 	deleteFeedback,
+	getListAvgRatingOfTeacherProfile,
+	getAvgRatingOfTeacherProfileByTeacherProfileId,
 };

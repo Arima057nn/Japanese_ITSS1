@@ -106,10 +106,82 @@ async function deleteFeedback(feedbackId) {
 	}
 }
 
+async function getListAvgRatingOfTeacherProfile() {
+	const query = `
+	SELECT 
+		TeacherProfile.teacher_id, 
+		User.first_name, 
+		User.last_name, 
+		User.user_name, 
+		teacher_profile_id, 
+		AVG(rating) AS average_rating
+	FROM 
+		Feedback
+	JOIN 
+		TeacherProfile
+	ON 
+		TeacherProfile.id = Feedback.teacher_profile_id
+	JOIN 
+		User
+	ON 
+		TeacherProfile.teacher_id = User.id
+	GROUP BY 
+		teacher_profile_id 
+	`;
+
+	try {
+		const result = await db.query(query, []);
+		return result;
+	} catch (error) {
+		console.error(
+			"Error while get list avg rating from Feedback :",
+			error.message
+		);
+		throw error;
+	}
+}
+
+async function getAvgRatingOfTeacherProfileByTeacherProfileId(
+	teacher_profile_id
+) {
+	const query = `
+	SELECT 
+		TeacherProfile.teacher_id, 
+		User.first_name, 
+		User.last_name, 
+		User.user_name, 
+		teacher_profile_id, 
+		AVG(rating) AS average_rating
+	FROM 
+		Feedback
+	JOIN 
+		TeacherProfile
+	ON 
+		TeacherProfile.id = Feedback.teacher_profile_id
+	JOIN 
+		User
+	ON 
+		TeacherProfile.teacher_id = User.id
+	WHERE
+	Feedback.teacher_profile_id = ?
+	GROUP BY 
+		teacher_profile_id 
+	`;
+
+	try {
+		const result = await db.query(query, [teacher_profile_id]);
+		return result;
+	} catch (error) {
+		console.error("Error while get avg rating from Feedback :", error.message);
+		throw error;
+	}
+}
 module.exports = {
 	createFeedback,
 	getAllFeedbacks,
 	getFeedbackById,
 	updateFeedback,
 	deleteFeedback,
+	getListAvgRatingOfTeacherProfile,
+	getAvgRatingOfTeacherProfileByTeacherProfileId,
 };

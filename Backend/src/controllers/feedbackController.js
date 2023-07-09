@@ -56,10 +56,37 @@ async function deleteFeedback(feedbackId) {
 	}
 }
 
+async function getListAvgRatingOfTeacherProfile() {
+	try {
+		const result = await feedbackService.getListAvgRatingOfTeacherProfile();
+		return result;
+	} catch (error) {
+		console.error("Error while getting avg rating:", error.message);
+		throw error;
+	}
+}
+
+async function getAvgRatingOfTeacherProfileByTeacherProfileId(
+	teacher_profile_id
+) {
+	try {
+		const result =
+			await feedbackService.getAvgRatingOfTeacherProfileByTeacherProfileId(
+				teacher_profile_id
+			);
+		return result;
+	} catch (error) {
+		console.error("Error while getting avg rating:", error.message);
+		throw error;
+	}
+}
+
 module.exports = {
 	createFeedback,
 	getAllFeedbacks,
 	getFeedbackById,
 	updateFeedback,
 	deleteFeedback,
+	getListAvgRatingOfTeacherProfile,
+	getAvgRatingOfTeacherProfileByTeacherProfileId,
 };
