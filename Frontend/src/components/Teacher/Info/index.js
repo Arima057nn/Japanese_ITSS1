@@ -51,6 +51,7 @@ function Info() {
   const [openFb, setOpenFb] = useState(false);
   const [bookmark, setBookmark] = useState({});
   const [bookmarked, setBookmarked] = useState(false);
+  const [rating, setRating] = useState(0);
 
   const handleOpen = () => {
     setOpen(true);
@@ -151,6 +152,21 @@ function Info() {
     handleOpen();
     console.log("feedback: ", res);
   };
+
+  useEffect(() => {
+    if (teacher.id) {
+      getRating();
+    }
+  }, [teacher.id]);
+
+  const getRating = async () => {
+    let res = await feedbackApi.getRating(teacher.id);
+    console.log("rating:", res);
+    if (res.length > 0) {
+      setRating(parseFloat(res[0].average_rating));
+    }
+  };
+
   return (
     <>
       <div className={cx("wrapper")}>
@@ -162,15 +178,15 @@ function Info() {
             ></img>
           </div>
           <div className={cx("rating")}>
-            <Rating
-              name="text-feedback"
-              value={5}
-              readOnly
-              precision={0.5}
-              emptyIcon={
-                <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-              }
-            />
+            {[...Array(5)].map((_star, i) => (
+              <i
+                key={i}
+                className={cx("fa", {
+                  "fa-star": i < parseInt(rating),
+                  "fa-star-o": i >= parseInt(rating),
+                })}
+              />
+            ))}
           </div>
           <div className={cx("item")}>
             <p className={cx("item-name")}>名前</p>

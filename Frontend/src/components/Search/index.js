@@ -36,8 +36,8 @@ function Search() {
   }, []);
 
   const getTeachers = async () => {
-    let res = await teacherApi.getTeachers();
-    // console.log("res:", res);
+    let res = await teacherApi.searchTeacher({});
+    console.log("resssss: ", res);
     setTeachers(res);
     setTeacherSearch(res);
   };

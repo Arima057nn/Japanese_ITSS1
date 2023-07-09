@@ -50,6 +50,7 @@ function Profile() {
   const [resultDay, setResultDay] = useState([]);
   const [resultTime, setResultTime] = useState([]);
   const [start, setStart] = useState(false);
+  const [rating, setRating] = useState();
 
   const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -97,11 +98,22 @@ function Profile() {
     let res = await teacherApi.deleteTeacher(teacher.id);
     toast.success("プロフィールを削除しました !");
     navigate("/profile/create");
-    // navigate("/home");
-
     console.log("fb: ", res);
   };
 
+  useEffect(() => {
+    if (teacher.id) {
+      getRating();
+    }
+  }, [teacher.id]);
+
+  const getRating = async () => {
+    let res = await feedbackApi.getRating(teacher.id);
+    console.log("rating:", res);
+    if (res.length > 0) {
+      setRating(parseFloat(res[0].average_rating));
+    }
+  };
   return (
     <>
       <div className={cx("wrapper")}>
@@ -114,15 +126,15 @@ function Profile() {
           </div>
 
           <div className={cx("rating")}>
-            <Rating
-              name="text-feedback"
-              value={!start ? 5 : 0}
-              readOnly
-              precision={0.5}
-              emptyIcon={
-                <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-              }
-            />
+            {[...Array(5)].map((_star, i) => (
+              <i
+                key={i}
+                className={cx("fa", {
+                  "fa-star": i < parseInt(rating),
+                  "fa-star-o": i >= parseInt(rating),
+                })}
+              />
+            ))}
           </div>
           <div className={cx("item")}>
             <p className={cx("item-name")}>名前</p>
