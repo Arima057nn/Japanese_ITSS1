@@ -50,7 +50,7 @@ function Profile() {
   const [resultDay, setResultDay] = useState([]);
   const [resultTime, setResultTime] = useState([]);
   const [start, setStart] = useState(false);
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
 
   const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
