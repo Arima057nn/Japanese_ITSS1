@@ -227,7 +227,7 @@ async function filterDetailTeacherProfile(teacherProfileData) {
 		}
 
 		if (teacherProfileData.age !== undefined) {
-			query += ` User.age = ${teacherProfileData.age} AND `;
+			query += ` User.age <= ${teacherProfileData.age} AND `;
 		}
 
 		if (teacherProfileData.experience !== undefined) {
