@@ -24,7 +24,6 @@ function ItemBookmark({ user, teacher }) {
       });
       setIsDeleted(true);
       toast.success("ブックマークをキャンセルしました !");
-      // Perform any additional actions after successful deletion
     } catch (error) {
       console.log("Error deleting bookmark: ", error);
     }
@@ -52,43 +51,99 @@ function ItemBookmark({ user, teacher }) {
           </div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisic elit. Tempora
-            aperiam fuga dolorem consequa, sunt, reiciendis quo neque dolores{" "}
-            {teacher.mail}
+            aperiam fuga dolorem consequa, sunt, reiciendis quo neque dolores
           </p>
         </div>
         <div className={cx("cot3")}>
-          <Button
-            onClick={handleDetailInfo}
-            variant="contained"
-            sx={{
-              backgroundColor: "var(--primary)",
-              color: "black",
-              fontSize: 16,
-              fontWeight: 700,
-              width: 134,
-              height: 44,
-              borderRadius: 2,
-              "&:hover": {
-                backgroundColor: "var(--primary-hover)",
-              },
-            }}
-          >
-            もっと詳しく
-          </Button>
+          {teacher.status === 0 && (
+            <>
+              <Button
+                onClick={handleDetailInfo}
+                variant="contained"
+                sx={{
+                  backgroundColor: "var(--primary)",
+                  color: "black",
+                  fontSize: 16,
+                  fontWeight: 700,
+                  width: 134,
+                  height: 44,
+                  borderRadius: 2,
+                  "&:hover": {
+                    backgroundColor: "var(--primary-hover)",
+                  },
+                }}
+              >
+                もっと詳しく
+              </Button>
 
-          <Button
-            onClick={handleDeleteBookmark}
-            variant="contained"
-            sx={{
-              fontSize: 16,
-              fontWeight: 700,
-              width: 134,
-              height: 44,
-              borderRadius: 2,
-            }}
-          >
-            削除
-          </Button>
+              <Button
+                onClick={handleDeleteBookmark}
+                variant="contained"
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  width: 134,
+                  height: 44,
+                  borderRadius: 2,
+                }}
+              >
+                削除
+              </Button>
+            </>
+          )}
+
+          {teacher.status === 1 && (
+            <Button
+              sx={{
+                fontSize: 20,
+                fontWeight: 700,
+                backgroundColor: "#F24C3D",
+                color: "#fff",
+                width: 134,
+                borderRadius: 2,
+                "&:hover": {
+                  backgroundColor: "#F24C3D",
+                  cursor: "text",
+                },
+              }}
+            >
+              受け入れた
+            </Button>
+          )}
+
+          {teacher.status === 2 && (
+            <>
+              <Button
+                sx={{
+                  fontSize: 20,
+                  fontWeight: 700,
+                  backgroundColor: "#468B97",
+                  color: "#fff",
+                  width: 134,
+                  borderRadius: 2,
+                  "&:hover": {
+                    backgroundColor: "#468B97",
+                    cursor: "text",
+                  },
+                }}
+              >
+                拒否された
+              </Button>
+              <Button
+                onClick={handleDeleteBookmark}
+                variant="contained"
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  width: 134,
+                  height: 44,
+                  borderRadius: 2,
+                }}
+              >
+                削除
+              </Button>
+            </>
+          )}
         </div>
       </div>
     )

@@ -116,7 +116,7 @@ function Profile() {
           <div className={cx("rating")}>
             <Rating
               name="text-feedback"
-              value={5}
+              value={!start ? 5 : 0}
               readOnly
               precision={0.5}
               emptyIcon={

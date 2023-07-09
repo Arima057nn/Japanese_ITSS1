@@ -28,7 +28,7 @@ function ItemInfo({ teacher }) {
         />
       </div>
       <div className={cx("cot2")}>
-        <h4>
+        <h4 style={{ marginBottom: 0 }}>
           {teacher.last_name} {teacher.first_name}
         </h4>
         <div className={cx("rating")}>
@@ -38,11 +38,7 @@ function ItemInfo({ teacher }) {
           <i className={cx("fa fa-star")}></i>
           <i className={cx("fa fa-star")}></i>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisic elit. Tempora aperiam
-          fuga dolorem consequa, sunt, reiciendis quo neque dolores{" "}
-          {teacher.mail}
-        </p>
+        <p style={{ marginBottom: 0 }}>{teacher.bio}</p>
       </div>
       <div className={cx("cot3")}>
         <Button

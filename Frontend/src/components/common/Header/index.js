@@ -92,7 +92,6 @@ function Header() {
           </div>
         ) : (
           <div className={cx("option")}>
-            <NotificationsNoneIcon sx={{ fontSize: 40 }} />
             <Avatar
               alt="Remy Sharp"
               src={

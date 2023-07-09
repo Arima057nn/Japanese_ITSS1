@@ -9,6 +9,9 @@ const cx = classNames.bind(styles);
 
 function BookmarkTeacher() {
   const [bookmarkList, setBookmarkList] = useState([]);
+  const [bookmarkedList, setBookmarkedList] = useState([]);
+  const [deniedList, setDeniedList] = useState([]);
+
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -23,7 +26,17 @@ function BookmarkTeacher() {
       studentId: user.userId,
       status: 0,
     });
+    let res1 = await teacherApi.getBookmarkTeachers({
+      studentId: user.userId,
+      status: 1,
+    });
+    let res2 = await teacherApi.getBookmarkTeachers({
+      studentId: user.userId,
+      status: 2,
+    });
     setBookmarkList(res);
+    setBookmarkedList(res1);
+    setDeniedList(res2);
   };
 
   return (
@@ -35,12 +48,23 @@ function BookmarkTeacher() {
       </div>
 
       <div className={cx("content2")}>
-        {bookmarkList.length === 0 ? (
+        {bookmarkList.length === 0 &&
+        bookmarkedList.length === 0 &&
+        deniedList.length === 0 ? (
           <h1>仮申し込みました教師はありません !</h1>
         ) : (
-          bookmarkList.map((teacher, i) => (
-            <ItemBookmark key={i} user={user} teacher={teacher} />
-          ))
+          <>
+            {bookmarkedList.map((teacher, i) => (
+              <ItemBookmark key={i} user={user} teacher={teacher} />
+            ))}
+
+            {deniedList.map((teacher, i) => (
+              <ItemBookmark key={i} user={user} teacher={teacher} />
+            ))}
+            {bookmarkList.map((teacher, i) => (
+              <ItemBookmark key={i} user={user} teacher={teacher} />
+            ))}
+          </>
         )}
       </div>
     </div>
