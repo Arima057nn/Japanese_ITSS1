@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: calc( 100vh - 4.5rem);
 }
 
 .form{
@@ -13,7 +13,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 90px 60px;
+  padding: 90px 70px;
+  box-shadow: var(--box-shadow);
 }
 
 .input-container{
@@ -26,13 +27,13 @@
 
 .icon{
   position: absolute;
-  top: 38px;
+  top: 45px;
   left: 12px;
 }
 
 .iconEye{
   position: absolute;
-  top: 38px;
+  top: 45px;
   right: 12px;
   cursor: pointer;
   // left: 250px;
@@ -41,7 +42,7 @@
 .input{
   border: none;
   border-radius: 6px;
-  padding: 10px 45px;
+  padding: 16.5px 45px;
   outline: none;
 }
 
@@ -52,8 +53,7 @@
     rgb(82, 82, 82),
     rgb(170, 169, 170)
   );
-  padding: 10px 20px;
-
+  padding: 16.5px 20px;
   width: 100%;
   margin: auto;
   margin-top: 30px;
