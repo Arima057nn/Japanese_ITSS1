@@ -93,22 +93,43 @@ function ItemBookmark({ user, teacher }) {
           )}
 
           {teacher.status === 1 && (
-            <Button
-              sx={{
-                fontSize: 20,
-                fontWeight: 700,
-                backgroundColor: "#F24C3D",
-                color: "#fff",
-                width: 134,
-                borderRadius: 2,
-                "&:hover": {
+            <>
+              <Button
+                sx={{
+                  fontSize: 20,
+                  fontWeight: 700,
                   backgroundColor: "#F24C3D",
-                  cursor: "text",
-                },
-              }}
-            >
-              受け入れた
-            </Button>
+                  color: "#fff",
+                  width: 134,
+                  height: 44,
+                  borderRadius: 2,
+                  "&:hover": {
+                    backgroundColor: "#F24C3D",
+                    cursor: "text",
+                  },
+                }}
+              >
+                受け入れた
+              </Button>
+              <Button
+                onClick={handleDetailInfo}
+                variant="contained"
+                sx={{
+                  backgroundColor: "var(--primary)",
+                  color: "black",
+                  fontSize: 16,
+                  fontWeight: 700,
+                  width: 134,
+                  height: 44,
+                  borderRadius: 2,
+                  "&:hover": {
+                    backgroundColor: "var(--primary-hover)",
+                  },
+                }}
+              >
+                もっと詳しく
+              </Button>
+            </>
           )}
 
           {teacher.status === 2 && (
