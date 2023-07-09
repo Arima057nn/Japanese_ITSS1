@@ -11,17 +11,25 @@ function BookmarkTeacher() {
   const [bookmarkList, setBookmarkList] = useState([]);
   const [bookmarkedList, setBookmarkedList] = useState([]);
   const [deniedList, setDeniedList] = useState([]);
+  const [teachers, setTeachers] = useState([]);
 
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (user.userId !== 0) {
+    const getTeachers = async () => {
+      let res = await teacherApi.searchTeacher({});
+      setTeachers(res);
+    };
+    getTeachers();
+  }, []);
+
+  useEffect(() => {
+    if (user.userId !== 0 && teachers.length !== 0) {
       getBookmarkList();
     }
-  }, [user.userId]);
+  }, [user.userId, teachers]);
 
   const getBookmarkList = async () => {
-    console.log("hahahah: ", user);
     let res = await teacherApi.getBookmarkTeachers({
       studentId: user.userId,
       status: 0,
@@ -34,9 +42,24 @@ function BookmarkTeacher() {
       studentId: user.userId,
       status: 2,
     });
-    setBookmarkList(res);
-    setBookmarkedList(res1);
-    setDeniedList(res2);
+
+    const mergedArray = res.map((item) => {
+      const matchingItem = teachers.find((element) => element.id === item.id);
+      return { ...item, ...matchingItem };
+    });
+    setBookmarkList(mergedArray);
+
+    const mergedArray1 = res1.map((item) => {
+      const matchingItem = teachers.find((element) => element.id === item.id);
+      return { ...item, ...matchingItem };
+    });
+    setBookmarkedList(mergedArray1);
+
+    const mergedArray2 = res2.map((item) => {
+      const matchingItem = teachers.find((element) => element.id === item.id);
+      return { ...item, ...matchingItem };
+    });
+    setDeniedList(mergedArray2);
   };
 
   return (

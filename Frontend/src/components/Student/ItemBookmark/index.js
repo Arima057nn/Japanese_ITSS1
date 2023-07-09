@@ -43,16 +43,25 @@ function ItemBookmark({ user, teacher }) {
             {teacher.last_name} {teacher.first_name}
           </h4>
           <div className={cx("rating")}>
-            <i className={cx("fa fa-star")}></i>
-            <i className={cx("fa fa-star")}></i>
-            <i className={cx("fa fa-star")}></i>
-            <i className={cx("fa fa-star")}></i>
-            <i className={cx("fa fa-star")}></i>
+            {[...Array(5)].map((_star, i) => (
+              <i
+                key={i}
+                className={cx("fa", {
+                  "fa-star":
+                    i <
+                    parseInt(
+                      teacher.average_rating ? teacher.average_rating : 0
+                    ),
+                  "fa-star-o":
+                    i >=
+                    parseInt(
+                      teacher.average_rating ? teacher.average_rating : 0
+                    ),
+                })}
+              />
+            ))}
           </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisic elit. Tempora
-            aperiam fuga dolorem consequa, sunt, reiciendis quo neque dolores
-          </p>
+          <p>{teacher.bio}</p>
         </div>
         <div className={cx("cot3")}>
           {teacher.status === 0 && (
