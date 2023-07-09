@@ -182,7 +182,7 @@ function Search() {
                 }}
               >
                 <option value="" className={cx("option-header")}>
-                  {AGE}
+                  {AGE} (以下)
                 </option>
                 <option value="18">18</option>
                 <option value="19">19</option>
