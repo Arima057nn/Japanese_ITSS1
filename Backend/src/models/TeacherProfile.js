@@ -90,6 +90,7 @@ async function getAllTeacherProfileWithBookmarkByStudentId(data) {
 		TeacherProfile.tution, 
 		TeacherProfile.address, 
 		TeacherProfile.available_day,
+		TeacherProfile.bio,
 		User.user_name,
 		User.first_name,
 		User.last_name,
