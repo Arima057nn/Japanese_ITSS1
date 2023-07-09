@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
-import { Avatar } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import { Dropdown, NavDropdown } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -43,24 +43,51 @@ function Header() {
               to="/login"
               style={{
                 textDecoration: "none",
-                fontSize: 24,
                 color: "#333",
                 fontWeight: 600,
               }}
             >
-              ログイン
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#EF6262",
+                  fontSize: 18,
+                  borderRadius: 4,
+                  width: 150,
+                  "&:hover": {
+                    backgroundColor: "#FF9EAA",
+                  },
+                }}
+              >
+                ログイン
+              </Button>
             </Link>
             <Link
               to="/signup"
               style={{
                 textDecoration: "none",
-                fontSize: 24,
                 color: "#333",
                 fontWeight: 600,
                 marginLeft: 30,
+                "&:hover": {
+                  backgroundColor: "#FF9EAA",
+                },
               }}
             >
-              サインアップ
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#EF6262",
+                  fontSize: 18,
+                  borderRadius: 4,
+                  "&:hover": {
+                    backgroundColor: "#FF9EAA",
+                  },
+                  width: 150,
+                }}
+              >
+                サインアップ
+              </Button>
             </Link>
           </div>
         ) : (
@@ -78,7 +105,7 @@ function Header() {
               sx={{ width: 48, height: 48, margin: "0 0 0 12px" }}
             />
 
-            <NavDropdown style={{ marginLeft: 4, fontSize: 20 }}>
+            <NavDropdown style={{ marginLeft: 4, fontSize: 18 }}>
               {token && user && (
                 <Dropdown.ItemText
                   style={{
@@ -88,7 +115,6 @@ function Header() {
                     backgroundColor: "#E4DCCF",
                   }}
                 >
-                  {/* {token.id === 3 ? "教師 :" : "学生 :"}  */}
                   {user.username}
                 </Dropdown.ItemText>
               )}
