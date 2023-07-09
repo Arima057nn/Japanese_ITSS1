@@ -4,18 +4,8 @@
   width: 1160px;
   padding: 20px;
 }
-.pd-r15 {
-  padding-right: 35px;
-}
-.pd-r35 {
-  padding-right: 55px;
-}
-.pd-r58 {
-  padding-right: 58px;
-}
-.mt-10 {
-  margin-top: 10px;
-}
+
+
 .right {
   background-color: white;
   width: 450px;
@@ -29,50 +19,63 @@
 .left {
   background-color: white;
   width: 650px;
-  // height: 550px;
-  padding: 25px 25px 35px 8px;
+  padding: 25px;
   border-radius: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  min-height: 600px;
 }
 
 .header-profile {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
+.img{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .img-profile {
   border-radius: 50%;
   width: 150px;
   height: 150px;
-  margin-left: 150px;
-}
-.pd-rating {
-  padding: 3px 15px;
-  margin: 6px 170px;
-  background-color: rgb(175, 233, 244);
-}
-.pd-rating i {
-  color: yellow;
-}
-.p-profile {
-  line-height: 2;
-  margin: 5px 0 5px 20px;
-}
-.profile-info {
-  display: flex;
-  margin: 15px 20px 0;
-}
-.profile-info-mt10 {
-  display: flex;
-  margin: 20px 20px 0;
+ 
 }
 
-.p-info {
-  margin-right: 20px;
+.rating{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
 }
+
+.item{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0 40px;
+  font-size: 22px;
+}
+.item-name{
+  width: 110px;
+  font-weight: 600;
+}
+
+.profile-info{
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  font-size: 22px;
+}
+
 .bottom-btn {
-  margin-top: 25px;
-  margin-left: 15px;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .btn {
   font-weight: bold;
@@ -86,25 +89,6 @@
   }
 }
 
-.profile-title {
-  margin-top: 20px;
-  margin-left: 60px;
-  display: flex;
-  font-size: 10px;
-}
-.profile-title-phone {
-  padding-right: 50px;
-  margin-top: 20px;
-  margin-left: 35px;
-  display: flex;
-}
-.left-btn {
-  font-weight: bold;
-    padding: 8px 36px;
-  margin: 55px 135px;
-  cursor: pointer;
-  border-radius: 4px;
-}
 
 .tittle {
   font-size: 50px;
@@ -114,3 +98,4 @@
   justify-content: center;
   margin-bottom: 32px;
 }
+

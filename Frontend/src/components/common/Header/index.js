@@ -36,91 +36,120 @@ function Header() {
         >
           <div className={cx("logo")}>Vlearn</div>
         </Link>
-        <div className={cx("option")}>
-          <NotificationsNoneIcon sx={{ fontSize: 40 }} />
-          <Avatar
-            alt="Remy Sharp"
-            src={
-              !token
-                ? "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
-                : user.role === 3
-                ? "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
-                : "https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg?w=826"
-            }
-            sx={{ width: 48, height: 48, margin: "0 0 0 12px" }}
-          />
 
-          <NavDropdown style={{ marginLeft: 4, fontSize: 20 }}>
-            {token && user && (
-              <Dropdown.ItemText
-                style={{
-                  fontWeight: 600,
-                  fontSize: 18,
-                  borderBottom: "1px soild red",
-                  backgroundColor: "#E4DCCF",
-                }}
-              >
-                {/* {token.id === 3 ? "教師 :" : "学生 :"}  */}
-                {user.username}
-              </Dropdown.ItemText>
-            )}
-            {!token && (
-              <NavDropdown.Item href="/login">
-                <NavLink to="/login" className="nav-link">
-                  <LoginIcon sx={{ mr: 2, color: "#BACDDB" }} /> ログイン
-                </NavLink>
-              </NavDropdown.Item>
-            )}
+        {!token ? (
+          <div className={cx("option")}>
+            <Link
+              to="/login"
+              style={{
+                textDecoration: "none",
+                fontSize: 24,
+                color: "#333",
+                fontWeight: 600,
+              }}
+            >
+              ログイン
+            </Link>
+            <Link
+              to="/signup"
+              style={{
+                textDecoration: "none",
+                fontSize: 24,
+                color: "#333",
+                fontWeight: 600,
+                marginLeft: 30,
+              }}
+            >
+              サインアップ
+            </Link>
+          </div>
+        ) : (
+          <div className={cx("option")}>
+            <NotificationsNoneIcon sx={{ fontSize: 40 }} />
+            <Avatar
+              alt="Remy Sharp"
+              src={
+                !token
+                  ? "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+                  : user.role === 3
+                  ? "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=2000"
+                  : "https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg?w=826"
+              }
+              sx={{ width: 48, height: 48, margin: "0 0 0 12px" }}
+            />
 
-            {!token && (
-              <NavDropdown.Item href="/signup">
-                <NavLink to="/signup" className="nav-link">
-                  <SensorOccupiedIcon sx={{ mr: 2, color: "#BACDDB" }} />
-                  サインアップ
-                </NavLink>
-              </NavDropdown.Item>
-            )}
-            {token && user.role === 3 && (
-              <NavDropdown.Item href="/profile">
-                <NavLink to="/profile" className="nav-link">
-                  <AccountBoxIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
-                  プロフィール
-                </NavLink>
-              </NavDropdown.Item>
-            )}
+            <NavDropdown style={{ marginLeft: 4, fontSize: 20 }}>
+              {token && user && (
+                <Dropdown.ItemText
+                  style={{
+                    fontWeight: 600,
+                    fontSize: 18,
+                    borderBottom: "1px soild red",
+                    backgroundColor: "#E4DCCF",
+                  }}
+                >
+                  {/* {token.id === 3 ? "教師 :" : "学生 :"}  */}
+                  {user.username}
+                </Dropdown.ItemText>
+              )}
+              {!token && (
+                <NavDropdown.Item href="/login">
+                  <NavLink to="/login" className="nav-link">
+                    <LoginIcon sx={{ mr: 2, color: "#BACDDB" }} /> ログイン
+                  </NavLink>
+                </NavDropdown.Item>
+              )}
 
-            {token && user.role === 3 && (
-              <NavDropdown.Item href="/studentlist">
-                <NavLink to="/studentlist" className="nav-link">
-                  <FeaturedPlayListIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
-                  学生リスト
-                </NavLink>
-              </NavDropdown.Item>
-            )}
-            {token && user.role === 2 && (
-              <NavDropdown.Item href="/home">
-                <NavLink to="/home" className="nav-link">
-                  <HomeIcon sx={{ mr: 2, color: "#BACDDB" }} /> ホーム
-                </NavLink>
-              </NavDropdown.Item>
-            )}
-            {token && user.role === 2 && (
-              <NavDropdown.Item href="/bookmarks">
-                <NavLink to="/bookmarks" className="nav-link">
-                  <BookmarksIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
-                  ブックマーク一覧
-                </NavLink>
-              </NavDropdown.Item>
-            )}
+              {!token && (
+                <NavDropdown.Item href="/signup">
+                  <NavLink to="/signup" className="nav-link">
+                    <SensorOccupiedIcon sx={{ mr: 2, color: "#BACDDB" }} />
+                    サインアップ
+                  </NavLink>
+                </NavDropdown.Item>
+              )}
+              {token && user.role === 3 && (
+                <NavDropdown.Item href="/profile">
+                  <NavLink to="/profile" className="nav-link">
+                    <AccountBoxIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
+                    プロフィール
+                  </NavLink>
+                </NavDropdown.Item>
+              )}
 
-            {token && (
-              <NavDropdown.Item onClick={() => handleLogout()}>
-                <LogoutIcon sx={{ mr: 2, color: "#BACDDB" }} />
-                ログアウト
-              </NavDropdown.Item>
-            )}
-          </NavDropdown>
-        </div>
+              {token && user.role === 3 && (
+                <NavDropdown.Item href="/studentlist">
+                  <NavLink to="/studentlist" className="nav-link">
+                    <FeaturedPlayListIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
+                    学生リスト
+                  </NavLink>
+                </NavDropdown.Item>
+              )}
+              {token && user.role === 2 && (
+                <NavDropdown.Item href="/home">
+                  <NavLink to="/home" className="nav-link">
+                    <HomeIcon sx={{ mr: 2, color: "#BACDDB" }} /> ホーム
+                  </NavLink>
+                </NavDropdown.Item>
+              )}
+              {token && user.role === 2 && (
+                <NavDropdown.Item href="/bookmarks">
+                  <NavLink to="/bookmarks" className="nav-link">
+                    <BookmarksIcon sx={{ mr: 2, color: "#BACDDB" }} />{" "}
+                    ブックマーク一覧
+                  </NavLink>
+                </NavDropdown.Item>
+              )}
+
+              {token && (
+                <NavDropdown.Item onClick={() => handleLogout()}>
+                  <LogoutIcon sx={{ mr: 2, color: "#BACDDB" }} />
+                  ログアウト
+                </NavDropdown.Item>
+              )}
+            </NavDropdown>
+          </div>
+        )}
       </div>
     </div>
   );

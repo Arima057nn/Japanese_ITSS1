@@ -4,18 +4,7 @@
   width: 1160px;
   padding: 20px;
 }
-.pd-r15 {
-  padding-right: 35px;
-}
-.pd-r35 {
-  padding-right: 55px;
-}
-.pd-r58 {
-  padding-right: 58px;
-}
-.mt-10 {
-  margin-top: 10px;
-}
+
 .right {
   background-color: white;
   width: 450px;
@@ -23,51 +12,57 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 40px 0;
-
+  padding: 24px 0;
 }
 .left {
   background-color: white;
   width: 650px;
-  // height: 550px;
-  padding: 25px 25px 35px 8px;
+  padding: 25px;
   border-radius: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  min-height: 600px;
 }
 
-.header-profile {
+.img {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
+
 .img-profile {
   border-radius: 50%;
   width: 150px;
   height: 150px;
-  margin-left: 150px;
 }
-.pd-rating {
-  padding: 3px 15px;
-  margin: 6px 170px;
-  background-color: rgb(175, 233, 244);
-}
-.pd-rating i {
-  color: yellow;
-}
-.p-profile {
-  line-height: 2;
-  margin: 5px 0 5px 20px;
-}
-.profile-info {
+.header-profile {
   display: flex;
-  margin: 15px 20px 0;
-}
-.profile-info-mt10 {
-  display: flex;
-  margin: 20px 20px 0;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.p-info {
-  margin-right: 20px;
+.rating {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
 }
+
+.item {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 10px 40px;
+  font-size: 22px;
+  align-items: center;
+}
+.item-name {
+  width: 100px;
+  font-weight: 600;
+}
+
 .bottom-btn {
   margin-top: 25px;
   margin-left: 15px;
@@ -86,6 +81,14 @@
   }
 }
 
+
+.profile-info{
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  font-size: 22px;
+  padding: 4px;
+}
 .profile-title {
   margin-top: 20px;
   margin-left: 60px;
@@ -93,17 +96,10 @@
   align-items: center;
   font-size: 10px;
 }
-.profile-title-phone {
-  padding-right: 50px;
-  margin-top: 20px;
-  margin-left: 35px;
-  display: flex;
 
-  align-items: center;
-}
 .left-btn {
   font-weight: bold;
-    padding: 8px 36px;
+  padding: 8px 36px;
   margin: 55px 135px;
   cursor: pointer;
   border-radius: 4px;
