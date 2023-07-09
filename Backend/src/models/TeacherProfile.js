@@ -184,43 +184,46 @@ async function getTeacherProfileById(teacherProfileId) {
 async function filterDetailTeacherProfile(teacherProfileData) {
 	try {
 		let query = `SELECT
-		TeacherProfile.id,
-		TeacherProfile.teacher_id,
-		TeacherProfile.target_id,
-		TeacherProfile.mail,
-		TeacherProfile.phone_number,
-		TeacherProfile.experience,
-		TeacherProfile.level,
-		TeacherProfile.tution,
-		TeacherProfile.address,
-		TeacherProfile.available_day,
-		TeacherProfile.bio,
-		TeacherProfile.available_time,
+		tp.id,
+		tp.teacher_id,
+		tp.target_id,
+		tp.mail,
+		tp.phone_number,
+		tp.experience,
+		tp.level,
+		tp.tution,
+		tp.address,
+		tp.available_day,
+		tp.bio,
+		tp.available_time,
 		User.user_name,
 		User.first_name,
 		User.last_name,
 		User.sex,
-		User.age
+		User.age,
+		AVG(f.rating) AS average_rating
 	FROM
-		TeacherProfile
+		TeacherProfile tp
 	JOIN
-		User ON TeacherProfile.teacher_id = User.id
+		User ON tp.teacher_id = User.id
+	LEFT JOIN 
+		Feedback f ON tp.id = f.teacher_profile_id
 	WHERE 
 	`;
 		if (teacherProfileData.available_day !== undefined) {
-			query += ` TeacherProfile.available_day = ${teacherProfileData.available_day} AND `;
+			query += ` tp.available_day = ${teacherProfileData.available_day} AND `;
 		}
 
 		if (teacherProfileData.level !== undefined) {
-			query += ` TeacherProfile.level = ${teacherProfileData.level} AND`;
+			query += ` tp.level = ${teacherProfileData.level} AND`;
 		}
 
 		if (teacherProfileData.target_id !== undefined) {
-			query += ` TeacherProfile.target_id = ${teacherProfileData.target_id} AND`;
+			query += ` tp.target_id = ${teacherProfileData.target_id} AND`;
 		}
 
 		if (teacherProfileData.tution !== undefined) {
-			query += ` TeacherProfile.tution >= ${teacherProfileData.tution} AND`;
+			query += ` tp.tution >= ${teacherProfileData.tution} AND`;
 		}
 		if (teacherProfileData.sex !== undefined) {
 			query += ` User.sex = '${teacherProfileData.sex}' AND `;
@@ -231,30 +234,30 @@ async function filterDetailTeacherProfile(teacherProfileData) {
 		}
 
 		if (teacherProfileData.experience !== undefined) {
-			query += ` TeacherProfile.experience LIKE '%${teacherProfileData.experience}%' AND `;
+			query += ` tp.experience LIKE '%${teacherProfileData.experience}%' AND `;
 		}
 
 		if (teacherProfileData.address !== undefined) {
-			query += ` TeacherProfile.address LIKE '%${teacherProfileData.address}%' AND `;
+			query += ` tp.address LIKE '%${teacherProfileData.address}%' AND `;
 		}
 
 		if (teacherProfileData.phone_number !== undefined) {
-			query += ` TeacherProfile.phone_number LIKE '%${teacherProfileData.phone_number}%' AND `;
+			query += ` tp.phone_number LIKE '%${teacherProfileData.phone_number}%' AND `;
 		}
 
 		if (teacherProfileData.mail !== undefined) {
-			query += ` TeacherProfile.mail LIKE '%${teacherProfileData.mail}%' AND `;
+			query += ` tp.mail LIKE '%${teacherProfileData.mail}%' AND `;
 		}
 
 		if (teacherProfileData.bio !== undefined) {
-			query += ` TeacherProfile.bio LIKE '%${teacherProfileData.bio}%' AND `;
+			query += ` tp.bio LIKE '%${teacherProfileData.bio}%' AND `;
 		}
 
 		if (teacherProfileData.available_time !== undefined) {
-			query += ` TeacherProfile.available_time LIKE '%${teacherProfileData.available_time}%' AND `;
+			query += ` tp.available_time LIKE '%${teacherProfileData.available_time}%' AND `;
 		}
 
-		query += ` 1 = 1 `;
+		query += ` 1 = 1 GROUP BY tp.id`;
 
 		// console.log(query);
 
