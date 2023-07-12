@@ -116,13 +116,13 @@ function Search() {
                 }}
               >
                 <option value="" className={cx("option-header")}>
-                  {TUTION}{" "}
+                  {TUTION} (1時間)
                 </option>
-                <option value="100">100円から</option>
-                <option value="200">200円から</option>
-                <option value="300">300円から</option>
-                <option value="400">400円から</option>
                 <option value="500">500円から</option>
+                <option value="1000">1000円から</option>
+                <option value="1500">1500円から</option>
+                <option value="2000">2000円から</option>
+                <option value="2500">2500円から</option>
               </select>
             </div>
             <div className={cx("filter")}>
