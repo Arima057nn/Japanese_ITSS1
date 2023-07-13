@@ -91,7 +91,16 @@ function Search() {
               </select>
             </div>
             <div className={cx("filter")}>
-              <select name="" className={cx("chung")}>
+              <select
+                name=""
+                onChange={(e) => {
+                  setSelectedOption({
+                    ...selectedOption,
+                    available_time: e.target.value,
+                  });
+                }}
+                className={cx("chung")}
+              >
                 <option value="" className={cx("option-header")}>
                   {TIME}
                 </option>
